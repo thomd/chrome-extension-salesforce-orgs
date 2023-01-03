@@ -1,6 +1,6 @@
 {
   "name": "Salesforce Orgs Manager",
-  "version": "4.4.0",
+  "version": "0.0.1",
   "description": "Manage Salesforce Orgs",
   "license": "MIT",
   "repository": {
@@ -47,6 +47,7 @@
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^8.0.0",
     "prettier": "^2.7.1",
+    "react-icons": "^4.7.1",
     "sass-loader": "^13.2.0",
     "source-map-loader": "^3.0.1",
     "style-loader": "^3.3.1",
