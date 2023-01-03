@@ -1,23 +1,50 @@
-import * as React from 'react'
-import { ChakraProvider, Container, Flex, VStack, IconButton, SearchIcon } from '@chakra-ui/react'
+import React from 'react';
+import { VStack, Text } from '@chakra-ui/react';
 
 // https://react-icons.github.io/react-icons
 import { TiCog } from 'react-icons/ti';
 
+import { useState } from 'react';
+import OrgList from '../../components/OrgList';
+
 const Popup = () => {
+  const todosList = [
+    { id: 1, text: 'Buy eggs' },
+    { id: 2, text: 'Walk the dog' },
+    { id: 3, text: 'Watch a movie' },
+  ];
+
+  const [todos, setTodos] = useState(todosList);
+
+  function deleteTodo(id) {
+    const newTodos = todos.filter((item) => {
+      return item.id !== id;
+    });
+    setTodos(newTodos);
+    console.log(newTodos);
+  }
+
+  function addTodo(newTodo) {
+    setTodos([...todos, newTodo]);
+  }
+
+  function editTodo(id, updatedTodo) {
+    const updatedItem = todos.map((todo) => {
+      return todo.id === id ? updatedTodo : todo;
+    });
+    setTodos(updatedItem);
+  }
+
   return (
-    <ChakraProvider>
-    <Container maxW="container.sm" p={0}>
-    <Flex h="100vh" p={20}>
-    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start">
-    <p>test</p>
+    <VStack p={5} w='500px'>
+      <Text
+        bgGradient="linear(to-l, #7928CA,#FF0080)"
+        bgClip="text"
+        fontSize="2xl"
+        fontWeight="extrabold"
+      >Salesforce Org Manager</Text>
+      <OrgList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
     </VStack>
-    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start" bg="gray.50">
-    <IconButton aria-label='Search database' icon={<TiCog />} />
-    </VStack>
-    </Flex>
-    </Container>
-    </ChakraProvider>
   );
 };
 
