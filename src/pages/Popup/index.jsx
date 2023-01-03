@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import Popup from './Popup';
 import './index.css';
 
-render(<Popup />, window.document.querySelector('#app-container'));
+createRoot(window.document.querySelector('#app-container')).render(<Popup />);
 
 if (module.hot) module.hot.accept();

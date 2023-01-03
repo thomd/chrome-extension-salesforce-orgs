@@ -9,13 +9,6 @@ var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
-var alias = {
-  'react-dom': '@hot-loader/react-dom',
-};
-
-// load the secrets
-var secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js');
-
 var fileExtensions = [
   'jpg',
   'jpeg',
@@ -28,10 +21,6 @@ var fileExtensions = [
   'woff',
   'woff2',
 ];
-
-if (fileSystem.existsSync(secretsPath)) {
-  alias['secrets'] = secretsPath;
-}
 
 var options = {
   mode: process.env.NODE_ENV || 'development',
@@ -104,7 +93,6 @@ var options = {
     ],
   },
   resolve: {
-    alias: alias,
     extensions: fileExtensions
       .map((extension) => '.' + extension)
       .concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
