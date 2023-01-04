@@ -1,4 +1,20 @@
-import { HStack, VStack, Text, Flex, Badge } from '@chakra-ui/react'
+import {
+  HStack,
+  VStack,
+  Text,
+  Flex,
+  Badge,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  Input
+} from '@chakra-ui/react'
+
 import { IconContext } from 'react-icons'
 import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiEdit, TiDelete } from 'react-icons/ti'
 import React, { useState } from 'react'
@@ -24,7 +40,7 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
 
   function handleEditSubmit(e) {
     e.preventDefault()
-    editTodo(modalValue.id, modalValue)
+    editOrg(modalValue.id, modalValue)
     setModalValue('')
     setIsOpen(false)
   }
@@ -47,11 +63,33 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
                 <TiEdit onClick={() => handleEditClick(org)} />
               </IconContext.Provider>
             </Flex>
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Edit Your Org</ModalHeader>
+                <ModalCloseButton />
+                <form onSubmit={handleEditSubmit}>
+                  <ModalBody>
+                    <Input value={modalValue.text}
+                      key={modalValue.id}
+                      variant='outline'
+                      type='text'
+                      placeholder='Update your Org ...'
+                      onChange={handleEditInputChange} />
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button mr={3} onClick={onClose}>Close</Button>
+                    <Button type='submit' mr={3}>Update</Button>
+                  </ModalFooter>
+                </form>
+              </ModalContent>
+            </Modal>
           </Flex>
         </HStack>
       ))}
     </VStack>
-  );
+  )
 }
 
-export default OrgList;
+export default OrgList
+
