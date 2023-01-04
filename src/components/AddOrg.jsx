@@ -5,15 +5,16 @@ import { nanoid } from 'nanoid'
 
 function AddOrg({ addOrg }) {
   const toast = useToast()
-  const [value, setValue] = useState('')
+  const [name, setName] = useState('')
+  const [url, setUrl] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
 
-    if (value === '') {
+    if (name === '') {
       toast({
-        title: 'Please enter the text.',
-        status: 'warning',
+        title: 'Please enter Name',
+        status: 'error',
         duration: 2000,
         isClosable: true,
       })
@@ -22,23 +23,34 @@ function AddOrg({ addOrg }) {
 
     const org = {
       id: nanoid(),
-      text: value
+      name: name,
+      url: url
     }
 
     addOrg(org)
-    setValue('')
+    setName('')
+    setUrl('')
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack spacing={5}>
+      <Stack spacing={3}>
         <Input
-          mt = {5}
-          value = {value}
+          mt = {3}
+          value = {name}
           variant = 'outline'
           type = 'text'
-          placeholder = 'Enter Org ...'
-          onChange= {(e) => setValue(e.target.value)} />
+          placeholder = 'Enter Name ...'
+          onChange= {(e) => setName(e.target.value)} />
+
+        <Input
+          mt = {3}
+          value = {url}
+          variant = 'outline'
+          type = 'text'
+          placeholder = 'Enter Url ...'
+          onChange= {(e) => setUrl(e.target.value)} />
+
         <Button type='submit'>Add Org</Button>
       </Stack>
     </form>
