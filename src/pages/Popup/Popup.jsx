@@ -4,11 +4,12 @@ import { VStack, Text } from '@chakra-ui/react'
 import { TiCog } from 'react-icons/ti'  // https://react-icons.github.io/react-icons
 import OrgList from '../../components/OrgList'
 import AddOrg from '../../components/AddOrg'
+import { useChromeStorageLocal } from 'use-chrome-storage'
 
 const Popup = () => {
   const orgsList = []
 
-  const [orgs, setOrgs] = useState(orgsList)
+  const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', orgsList);
 
   function deleteOrg(id) {
     const newOrgs = orgs.filter((item) => item.id !== id )
@@ -33,6 +34,8 @@ const Popup = () => {
         fontWeight = 'extrabold'>Salesforce Org Manager</Text>
       <OrgList orgs={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
       <AddOrg addOrg={addOrg}/>
+      <Text>Persisted in chrome.storage.local: {isPersistent.toString()}</Text>
+      <Text>Error: {error}</Text>
     </VStack>
   )
 }
