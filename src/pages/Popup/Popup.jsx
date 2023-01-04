@@ -1,51 +1,40 @@
-import React from 'react';
-import { VStack, Text } from '@chakra-ui/react';
-
-// https://react-icons.github.io/react-icons
-import { TiCog } from 'react-icons/ti';
-
-import { useState } from 'react';
-import OrgList from '../../components/OrgList';
+import React from 'react'
+import { useState } from 'react'
+import { VStack, Text } from '@chakra-ui/react'
+import { TiCog } from 'react-icons/ti'  // https://react-icons.github.io/react-icons
+import OrgList from '../../components/OrgList'
+import AddOrg from '../../components/AddOrg'
 
 const Popup = () => {
-  const todosList = [
-    { id: 1, text: 'Buy eggs' },
-    { id: 2, text: 'Walk the dog' },
-    { id: 3, text: 'Watch a movie' },
-  ];
+  const orgsList = []
 
-  const [todos, setTodos] = useState(todosList);
+  const [orgs, setOrgs] = useState(orgsList)
 
-  function deleteTodo(id) {
-    const newTodos = todos.filter((item) => {
-      return item.id !== id;
-    });
-    setTodos(newTodos);
-    console.log(newTodos);
+  function deleteOrg(id) {
+    const newOrgs = orgs.filter((item) => item.id !== id )
+    setOrgs(newOrgs)
   }
 
-  function addTodo(newTodo) {
-    setTodos([...todos, newTodo]);
+  function addOrg(newOrg) {
+    setOrgs([...orgs, newOrg])
   }
 
-  function editTodo(id, updatedTodo) {
-    const updatedItem = todos.map((todo) => {
-      return todo.id === id ? updatedTodo : todo;
-    });
-    setTodos(updatedItem);
+  function editOrg(id, updatedOrg) {
+    const updatedItem = orgs.map((org) => org.id === id ? updatedOrg : org )
+    setOrgs(updatedItem)
   }
 
   return (
     <VStack p={5} w='500px'>
       <Text
-        bgGradient="linear(to-l, #7928CA,#FF0080)"
-        bgClip="text"
-        fontSize="2xl"
-        fontWeight="extrabold"
-      >Salesforce Org Manager</Text>
-      <OrgList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
+        bgGradient = 'linear(to-l, #7928CA, #FF0080)'
+        bgClip = 'text'
+        fontSize = '2xl'
+        fontWeight = 'extrabold'>Salesforce Org Manager</Text>
+      <OrgList orgs={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+      <AddOrg addOrg={addOrg}/>
     </VStack>
-  );
-};
+  )
+}
 
-export default Popup;
+export default Popup
