@@ -63,7 +63,7 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
                 <TiEdit onClick={() => handleEditClick(org)} />
               </IconContext.Provider>
             </Flex>
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} size='full' motionPreset='none'>
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader>Edit Your Org</ModalHeader>

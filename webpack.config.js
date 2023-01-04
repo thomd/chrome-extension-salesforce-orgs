@@ -1,13 +1,13 @@
-var webpack = require('webpack'),
-  path = require('path'),
-  fileSystem = require('fs-extra'),
-  env = require('./utils/env'),
-  CopyWebpackPlugin = require('copy-webpack-plugin'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  TerserPlugin = require('terser-webpack-plugin');
-var { CleanWebpackPlugin } = require('clean-webpack-plugin');
+var webpack = require('webpack')
+var path = require('path')
+var fileSystem = require('fs-extra')
+var env = require('./utils/env')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var TerserPlugin = require('terser-webpack-plugin')
+var { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+const ASSET_PATH = process.env.ASSET_PATH || '/'
 
 var fileExtensions = [
   'jpg',
@@ -20,7 +20,7 @@ var fileExtensions = [
   'ttf',
   'woff',
   'woff2',
-];
+]
 
 var options = {
   mode: process.env.NODE_ENV || 'development',
@@ -39,9 +39,7 @@ var options = {
   module: {
     rules: [
       {
-        // look for .css or .scss files
         test: /\.(css|scss)$/,
-        // in the `src` directory
         use: [
           {
             loader: 'style-loader',
