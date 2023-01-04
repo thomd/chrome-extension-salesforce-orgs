@@ -39,7 +39,7 @@ function AddOrg({ addOrg }) {
           type = 'text'
           placeholder = 'Enter Org ...'
           onChange= {(e) => setValue(e.target.value)} />
-        <Button colorScheme='tcal' type='submit'>Add Org</Button>
+        <Button type='submit'>Add Org</Button>
       </Stack>
     </form>
   )
