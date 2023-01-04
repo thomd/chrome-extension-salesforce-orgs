@@ -45,6 +45,10 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
     setIsOpen(false)
   }
 
+  function openHome(url) {
+    chrome.tabs.create({ url: url })
+  }
+
   return !orgs.length ? (
     <Badge variant='outline' borderRadius='2' p='2' m='2'>No Orgs</Badge>
   ) : (
@@ -53,10 +57,9 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
         <HStack key={org.id} w='100%'>
           <Flex py={1} w='100%' justifyContent='space-between'>
             <Text fontSize="md">{org.name}</Text>
-            <Text fontSize="md">{org.url}</Text>
             <Flex color='gray.500' w='24%' justifyContent='space-between'>
               <IconContext.Provider value={{ size: '2em' }}>
-                <TiHomeOutline />
+                <TiHomeOutline onClick={() => openHome(org.url)} />
                 <TiCogOutline />
                 <TiDocumentText />
                 <TiShoppingCart />

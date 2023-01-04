@@ -1,57 +1,76 @@
-import { Stack, Input, Button, useToast } from '@chakra-ui/react'
+import {
+  Stack,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Button,
+} from '@chakra-ui/react'
+
 import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
 
 
 function AddOrg({ addOrg }) {
-  const toast = useToast()
   const [name, setName] = useState('')
+  const [nameMissing, setNameMissing] = useState(false)
   const [url, setUrl] = useState('')
+  const [urlMissing, setUrlMissing] = useState(false)
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  const handleSubmit = ev => {
+    ev.preventDefault()
 
     if (name === '') {
-      toast({
-        title: 'Please enter Name',
-        status: 'error',
-        duration: 2000,
-        isClosable: true,
-      })
+      setNameMissing(true)
+    }
+
+    if (url === '') {
+      setUrlMissing(true)
+    }
+
+    if (nameMissing || urlMissing) {
       return
     }
 
-    const org = {
+    addOrg({
       id: nanoid(),
       name: name,
       url: url
-    }
+    })
 
-    addOrg(org)
     setName('')
+    setNameMissing(false)
     setUrl('')
+    setUrlMissing(false)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <Stack spacing={3}>
-        <Input
-          mt = {3}
-          value = {name}
-          variant = 'outline'
-          type = 'text'
-          placeholder = 'Enter Name ...'
-          onChange= {(e) => setName(e.target.value)} />
 
         <Input
-          mt = {3}
-          value = {url}
-          variant = 'outline'
-          type = 'text'
-          placeholder = 'Enter Url ...'
-          onChange= {(e) => setUrl(e.target.value)} />
+          size='sm'
+          value={name}
+          variant='outline'
+          type='text'
+          isInvalid={nameMissing}
+          errorBorderColor='crimson'
+          placeholder='Enter Name ...'
+          onChange={ev => setName(ev.target.value)} />
 
-        <Button type='submit'>Add Org</Button>
+        <InputGroup size='sm'>
+          <InputLeftAddon children='https://' />
+          <Input
+            value={url}
+            variant='outline'
+            type='text'
+            isInvalid={urlMissing}
+            errorBorderColor='crimson'
+            placeholder='Enter Url ...'
+            onChange={ev => setUrl(ev.target.value)} />
+        </InputGroup>
+
+        <Button size='sm' type='submit'>Add Org</Button>
+
       </Stack>
     </form>
   )
