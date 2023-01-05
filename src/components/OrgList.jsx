@@ -11,6 +11,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Box,
   Button,
   Input
 } from '@chakra-ui/react'
@@ -18,6 +19,8 @@ import {
 import { IconContext } from 'react-icons'
 import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiEdit, TiDelete } from 'react-icons/ti'
 import React, { useState } from 'react'
+import OrgAction from './OrgAction'
+
 
 function OrgList({ orgs, deleteOrg, editOrg }) {
 
@@ -45,8 +48,20 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
     setIsOpen(false)
   }
 
-  function openHome(url) {
-    chrome.tabs.create({ url: url })
+  function openHome(org) {
+    chrome.tabs.create({ url: org.url })
+  }
+
+  function openSetup(org) {
+    chrome.tabs.create({ url: org.url })
+  }
+
+  function openDeveloperConsole(org) {
+    chrome.tabs.create({ url: org.url })
+  }
+
+  function openStore(org) {
+    chrome.tabs.create({ url: org.url })
   }
 
   return !orgs.length ? (
@@ -57,15 +72,13 @@ function OrgList({ orgs, deleteOrg, editOrg }) {
         <HStack key={org.id} w='100%'>
           <Flex py={1} w='100%' justifyContent='space-between'>
             <Text fontSize="md">{org.name}</Text>
-            <Flex color='gray.500' w='24%' justifyContent='space-between'>
-              <IconContext.Provider value={{ size: '2em' }}>
-                <TiHomeOutline onClick={() => openHome(org.url)} />
-                <TiCogOutline />
-                <TiDocumentText />
-                <TiShoppingCart />
-                <TiDelete onClick={() => deleteOrg(org.id)} />
-                <TiEdit onClick={() => handleEditClick(org)} />
-              </IconContext.Provider>
+            <Flex color='gray.500' w='30%' justifyContent='space-between'>
+              <OrgAction icon={TiHomeOutline} color='blue' org={org} action={openHome} />
+              <OrgAction icon={TiCogOutline} color='blue' org={org} action={openSetup} />
+              <OrgAction icon={TiDocumentText} color='blue' org={org} action={openDeveloperConsole} />
+              <OrgAction icon={TiShoppingCart} color='blue' org={org} action={openStore} />
+              <OrgAction icon={TiDelete} color='red' org={org} action={deleteOrg} />
+              <OrgAction icon={TiEdit} color='blue' org={org} action={handleEditClick} />
             </Flex>
             <Modal isOpen={isOpen} onClose={onClose} size='full' motionPreset='none'>
               <ModalOverlay />

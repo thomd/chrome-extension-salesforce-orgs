@@ -11,8 +11,8 @@ const Popup = () => {
 
   const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', orgsList);
 
-  function deleteOrg(id) {
-    const newOrgs = orgs.filter((item) => item.id !== id )
+  function deleteOrg(org) {
+    const newOrgs = orgs.filter((item) => item.id !== org.id )
     setOrgs(newOrgs)
   }
 
