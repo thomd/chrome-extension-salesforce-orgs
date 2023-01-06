@@ -7,11 +7,13 @@ import {
   ModalBody,
   Box,
   Button,
+  ButtonGroup,
   Input
 } from '@chakra-ui/react'
 
 import OrgAction from './OrgAction'
 import React, { useState } from 'react'
+import { TiChevronLeftOutline } from 'react-icons/ti'
 
 
 function EditOrg({ icon, color, org, editOrg }) {
@@ -47,11 +49,13 @@ function EditOrg({ icon, color, org, editOrg }) {
   return (
     <>
       <OrgAction icon={icon} color={color} org={org} action={handleEditClick} />
+
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Edit Your Org</ModalHeader>
+          <ModalHeader fontSize='md'>Edit Your Org</ModalHeader>
           <form onSubmit={handleEditSubmit}>
+
             <ModalBody>
               <Input
                 size='sm'
@@ -71,10 +75,14 @@ function EditOrg({ icon, color, org, editOrg }) {
                 onChange={handleUrlChange}
               />
             </ModalBody>
+
             <ModalFooter>
-              <Button size='sm' mr={3} onClick={onClose}>Close</Button>
-              <Button size='sm' type='submit' mr={3}>Update</Button>
+              <ButtonGroup size='sm' spacing='4'>
+                <Button leftIcon={<TiChevronLeftOutline />} variant='outline' onClick={onClose}>Back</Button>
+                <Button type='submit'>Update</Button>
+              </ButtonGroup>
             </ModalFooter>
+
           </form>
         </ModalContent>
       </Modal>
