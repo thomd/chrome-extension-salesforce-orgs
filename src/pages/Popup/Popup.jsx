@@ -1,16 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useChromeStorageLocal } from 'use-chrome-storage'
 import { VStack, Text, Flex, Button } from '@chakra-ui/react'
-import { TiCog } from 'react-icons/ti'  // https://react-icons.github.io/react-icons
 import { BiPlus } from "react-icons/bi";
 import OrgList from '../../components/OrgList'
 import AddOrg from '../../components/AddOrg'
-import { useChromeStorageLocal } from 'use-chrome-storage'
 
 const Popup = () => {
-  const orgsList = []
-
-  const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', orgsList);
+  const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', [])
 
   function deleteOrg(org) {
     const newOrgs = orgs.filter((item) => item.id !== org.id )
@@ -36,7 +32,7 @@ const Popup = () => {
           fontWeight = 'bold'>Salesforce Org Manager</Text>
         <Button leftIcon={<BiPlus />} size='sm'>Add Org</Button>
       </Flex>
-      <OrgList orgs={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+      <OrgList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
       <AddOrg addOrg={addOrg}/>
       <Text>Persisted in chrome.storage.local: {isPersistent.toString()}</Text>
       <Text>Error: {error}</Text>
