@@ -26,10 +26,10 @@ const Popup = () => {
     <VStack p={5} w='500px'>
       <Flex w='100%' mb={4} justifyContent='space-between'>
         <Text
-          bgGradient = 'linear(to-l, #7928CA, #FF0080)'
-          bgClip = 'text'
           fontSize = '2xl'
-          fontWeight = 'bold'>Salesforce Org Manager</Text>
+          fontFamily = "'ITC Avant Garde','Helvetica Neue'"
+          color = '#032d60'
+          fontWeight = 'bold'>Salesforce Orgs</Text>
         <Button leftIcon={<BiPlus />} size='sm'>Add Org</Button>
       </Flex>
       <OrgList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
