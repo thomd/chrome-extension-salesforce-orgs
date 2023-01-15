@@ -13,11 +13,10 @@ import {
 
 import OrgAction from './OrgAction'
 import React, { useState } from 'react'
-import { TiChevronLeftOutline } from 'react-icons/ti'
+import { TiChevronLeftOutline, TiPencil } from 'react-icons/ti'
 
 
-function EditOrgAction({ icon, color, org, editOrg }) {
-
+function EditOrgAction({ org, editOrg }) {
   const [isOpen, setIsOpen] = useState(false)
   const [modalValue, setModalValue] = useState({})
 
@@ -45,17 +44,14 @@ function EditOrgAction({ icon, color, org, editOrg }) {
     setModalValue({ ...modalValue, url: e.target.value })
   }
 
-
   return (
     <>
-      <OrgAction icon={icon} color={color} org={org} action={handleEditClick} />
-
+      <OrgAction icon={TiPencil} color='blue.500' org={org} action={handleEditClick} />
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader fontSize='md'>Edit Your Org</ModalHeader>
           <form onSubmit={handleEditSubmit}>
-
             <ModalBody>
               <Input
                 size='sm'
@@ -75,14 +71,12 @@ function EditOrgAction({ icon, color, org, editOrg }) {
                 onChange={handleUrlChange}
               />
             </ModalBody>
-
             <ModalFooter>
               <ButtonGroup size='sm' spacing='4'>
                 <Button leftIcon={<TiChevronLeftOutline />} variant='outline' onClick={onClose}>Back</Button>
                 <Button type='submit'>Update</Button>
               </ButtonGroup>
             </ModalFooter>
-
           </form>
         </ModalContent>
       </Modal>
