@@ -1,9 +1,23 @@
 import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
-import { VStack, Text, Flex, Button } from '@chakra-ui/react'
-import { BiPlus } from "react-icons/bi";
+import { VStack, Text, Flex, Button, Alert, AlertIcon } from '@chakra-ui/react'
+import { BiMenu } from 'react-icons/bi'
 import OrgList from '../../components/OrgList'
 import AddOrg from '../../components/AddOrg'
+
+//
+//    Popup
+//    ├── EditOrg
+//    ├── AddOrg
+//    └── OrgList
+//        └── OrgListItem
+//            ├── OrgAction
+//            ├── OrgEditAction
+//            ├── OrgAction
+//            ├── OrgAction
+//            └── OrgAction
+//
+//
 
 const Popup = () => {
   const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', [])
@@ -23,19 +37,18 @@ const Popup = () => {
   }
 
   return (
-    <VStack p={5} w='500px'>
+    <VStack p={5} w='500px' minH='220px'>
       <Flex w='100%' mb={4} justifyContent='space-between'>
+        <Button leftIcon={<BiMenu />} size='sm'>Edit</Button>
         <Text
           fontSize = '2xl'
           fontFamily = "'ITC Avant Garde','Helvetica Neue'"
           color = '#032d60'
           fontWeight = 'bold'>Salesforce Orgs</Text>
-        <Button leftIcon={<BiPlus />} size='sm'>Add Org</Button>
+        <AddOrg addOrg={addOrg}/>
       </Flex>
       <OrgList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
-      <AddOrg addOrg={addOrg}/>
-      <Text>Persisted in chrome.storage.local: {isPersistent.toString()}</Text>
-      <Text>Error: {error}</Text>
+      { error && <Alert status='error'><AlertIcon />Error: {error}</Alert> }
     </VStack>
   )
 }

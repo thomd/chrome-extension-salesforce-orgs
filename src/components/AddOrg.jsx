@@ -1,78 +1,135 @@
 import {
-  Stack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  Button,
+  ButtonGroup,
   Input,
   InputGroup,
-  InputLeftAddon,
-  Button,
+  InputLeftAddon
 } from '@chakra-ui/react'
 
 import React, { useState } from 'react'
+import { BiPlus } from 'react-icons/bi'
+import { TiChevronLeftOutline } from 'react-icons/ti'
 import { nanoid } from 'nanoid'
+import { SALESFORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
 
 
 function AddOrg({ addOrg }) {
-  const [name, setName] = useState('')
-  const [nameMissing, setNameMissing] = useState(false)
-  const [url, setUrl] = useState('')
-  const [urlMissing, setUrlMissing] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [modalValue, setModalValue] = useState({})
+  const [nameInvalid, setNameInvalid] = useState(false)
+  const [urlInvalid, setUrlInvalid] = useState(false)
 
   const handleSubmit = ev => {
     ev.preventDefault()
+    let formInvalid = false
+    setUrlInvalid(false)
+    setNameInvalid(false)
 
-    if (name === '') {
-      setNameMissing(true)
+    if (modalValue.name === '') {
+      setNameInvalid(true)
+      formInvalid = true
     }
 
-    if (url === '') {
-      setUrlMissing(true)
+    if (modalValue.url === '' || !modalValue.url.match(SALESFORCE_HOST)) {
+      setUrlInvalid(true)
+      formInvalid = true
     }
 
-    if (nameMissing || urlMissing) {
-      return
+    if (!formInvalid) {
+      modalValue.url = sanitizeUrl(modalValue.url)
+      addOrg(modalValue)
+      setIsOpen(false)
     }
+  }
 
-    addOrg({
+  function handleAddClick() {
+    setIsOpen(true)
+    setModalValue({
       id: nanoid(),
-      name: name,
-      url: url
+      name: '',
+      url: ''
     })
+  }
 
-    setName('')
-    setNameMissing(false)
-    setUrl('')
-    setUrlMissing(false)
+  function onClose() {
+    setIsOpen(false)
+  }
+
+  function handleUrlChange(ev) {
+    let url = extractHost(ev.target.value)
+    setModalValue({ ...modalValue, url })
+  }
+
+  function handleUrlBlur(ev) {
+    let url = ev.target.value
+    if (url.match(SALESFORCE_HOST)) {
+      let name = extractName(url)
+      setModalValue({ ...modalValue, name })
+    } else {
+      setUrlInvalid(true)
+    }
+  }
+
+  function handleNameChange(ev) {
+    let name = ev.target.value
+    setModalValue({ ...modalValue, name })
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack spacing={3}>
-
-        <Input
-          size='sm'
-          value={name}
-          variant='outline'
-          type='text'
-          isInvalid={nameMissing}
-          errorBorderColor='crimson'
-          placeholder='Enter Name ...'
-          onChange={ev => setName(ev.target.value)} />
-
-        <InputGroup size='sm'>
-          <InputLeftAddon children='https://' />
-          <Input
-            value={url}
-            variant='outline'
-            type='text'
-            isInvalid={urlMissing}
-            errorBorderColor='crimson'
-            placeholder='Enter Url ...'
-            onChange={ev => setUrl(ev.target.value)} />
-        </InputGroup>
-
-        <Button size='sm' type='submit'>Add Org</Button>
-
-      </Stack>
-    </form>
+    <>
+      <Button leftIcon={<BiPlus />} size='sm' onClick={handleAddClick}>Add Org</Button>
+      <Modal isOpen={isOpen} size='full' motionPreset='none'>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader fontSize='md'>Add Salesforce Org</ModalHeader>
+          <form onSubmit={handleSubmit}>
+            <ModalBody>
+              <InputGroup size='sm'>
+                <InputLeftAddon children='https://' />
+                <Input
+                  size='sm'
+                  mb={3}
+                  value={modalValue.url}
+                  key={modalValue.id}
+                  variant='outline'
+                  type='text'
+                  placeholder='*.my.salesforce.com'
+                  _placeholder={{ opacity: 0.5 }}
+                  isInvalid={urlInvalid}
+                  focusBorderColor='gray.400'
+                  onChange={handleUrlChange}
+                  onBlur={handleUrlBlur}
+                />
+              </InputGroup>
+              <Input
+                size='sm'
+                value={modalValue.name}
+                key={modalValue.id}
+                variant='outline'
+                type='text'
+                placeholder='Org Alias'
+                _placeholder={{ opacity: 0.5 }}
+                isInvalid={nameInvalid}
+                focusBorderColor='gray.400'
+                onChange={handleNameChange}
+              />
+            </ModalBody>
+            <ModalFooter>
+              <ButtonGroup size='sm' spacing='4'>
+                <Button leftIcon={<TiChevronLeftOutline />} variant='outline' onClick={onClose}>Back</Button>
+                <Button type='submit'>Add</Button>
+              </ButtonGroup>
+            </ModalFooter>
+          </form>
+        </ModalContent>
+      </Modal>
+    </>
   )
 }
 

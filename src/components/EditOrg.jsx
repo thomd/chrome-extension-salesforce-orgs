@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  Box,
   Button,
   ButtonGroup,
   Input
@@ -16,7 +15,7 @@ import React, { useState } from 'react'
 import { TiChevronLeftOutline } from 'react-icons/ti'
 
 
-function EditOrgAction({ icon, color, org, editOrg }) {
+function EditOrg({ icon, color, org, editOrg }) {
 
   const [isOpen, setIsOpen] = useState(false)
   const [modalValue, setModalValue] = useState({})
@@ -90,4 +89,4 @@ function EditOrgAction({ icon, color, org, editOrg }) {
     )
   }
 
-export default EditOrgAction
+export default EditOrg
