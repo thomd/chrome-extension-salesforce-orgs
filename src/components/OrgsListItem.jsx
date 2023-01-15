@@ -17,7 +17,7 @@ const DragHandler = (props) => (
   </div>
 )
 
-function OrgListItem({ org, deleteOrg, editOrg }) {
+function OrgsListItem({ org, deleteOrg, editOrg }) {
 
   function openHome(org) {
     open(org.url)
@@ -73,6 +73,6 @@ function OrgListItem({ org, deleteOrg, editOrg }) {
   )
 }
 
-export default OrgListItem
+export default OrgsListItem
 
 

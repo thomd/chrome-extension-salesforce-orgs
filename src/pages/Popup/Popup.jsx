@@ -2,21 +2,34 @@ import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
 import { VStack, Text, Flex, Button, Alert, AlertIcon } from '@chakra-ui/react'
 import { BiMenu } from 'react-icons/bi'
-import OrgList from '../../components/OrgList'
+import EditOrgs from '../../components/EditOrgs'
 import AddOrg from '../../components/AddOrg'
+import OrgsList from '../../components/OrgsList'
 
 //
-//    Popup
-//    ├── EditOrg
-//    ├── AddOrg
-//    └── OrgList
-//        └── OrgListItem
-//            ├── OrgAction
-//            ├── OrgEditAction
-//            ├── OrgAction
-//            ├── OrgAction
-//            └── OrgAction
+// Component Structure:
 //
+//    Popup
+//    ├── EditOrgs
+//    │   ├── Button
+//    │   └── Modal
+//    │        └── OrgsList
+//    │            └── SortableList
+//    │                └── OrgsListItem
+//    │                    ├── OrgColorAction
+//    │                    ├── OrgAction (Delete)
+//    │                    └── OrgEditAction
+//    ├── AddOrg
+//    │   ├── Button
+//    │   └── Modal
+//    │       ├── Input
+//    │       └── Input
+//    └── OrgsList
+//        └── OrgsListItem
+//            ├── OrgAction (Home)
+//            ├── OrgAction (Setup)
+//            ├── OrgAction (Developer Console)
+//            └── OrgAction (Store)
 //
 
 const Popup = () => {
@@ -39,16 +52,20 @@ const Popup = () => {
   return (
     <VStack p={5} w='500px' minH='220px'>
       <Flex w='100%' mb={4} justifyContent='space-between'>
-        <Button leftIcon={<BiMenu />} size='sm'>Edit</Button>
+        <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
         <Text
-          fontSize = '2xl'
-          fontFamily = "'ITC Avant Garde','Helvetica Neue'"
-          color = '#032d60'
-          fontWeight = 'bold'>Salesforce Orgs</Text>
+          fontSize='2xl'
+          fontFamily="'ITC Avant Garde','Helvetica Neue'"
+          color='#032d60'
+          fontWeight='bold'>Salesforce Orgs</Text>
         <AddOrg addOrg={addOrg}/>
       </Flex>
-      <OrgList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
-      { error && <Alert status='error'><AlertIcon />Error: {error}</Alert> }
+      <OrgsList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+      { error &&
+      <Alert status='error'>
+        <AlertIcon />Error: {error}
+      </Alert>
+      }
     </VStack>
   )
 }
