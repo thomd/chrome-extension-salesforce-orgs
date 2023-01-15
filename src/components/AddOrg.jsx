@@ -83,7 +83,7 @@ function AddOrg({ addOrg }) {
 
   return (
     <>
-      <Button leftIcon={<BiPlus />} size='sm' onClick={handleAddClick}>Add Org</Button>
+      <Button leftIcon={<BiPlus />} size='sm' variant='outline' borderColor='gray.300' onClick={handleAddClick}>Add Org</Button>
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>

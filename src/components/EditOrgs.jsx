@@ -14,7 +14,7 @@ import OrgAction from './OrgAction'
 import React, { useState } from 'react'
 import { BiMenu } from 'react-icons/bi'
 import { TiChevronLeftOutline } from 'react-icons/ti'
-import OrgsList from './OrgsList'
+import OrgsListEditable from './OrgsListEditable'
 
 
 function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg }) {
@@ -30,13 +30,13 @@ function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg }) {
 
   return (
     <>
-      <Button leftIcon={<BiMenu />} size='sm' onClick={handleEditClick}>Edit</Button>
+      <Button leftIcon={<BiMenu />} size='sm' variant='outline' borderColor='gray.300' onClick={handleEditClick}>Edit</Button>
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent p={5}>
             <ModalBody p={0}>
               <Button leftIcon={<TiChevronLeftOutline />} size='sm' variant='outline' onClick={onClose}>Back</Button>
-              <OrgsList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+              <OrgsListEditable items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
             </ModalBody>
         </ModalContent>
       </Modal>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
-import { VStack, Text, Flex, Button, Alert, AlertIcon } from '@chakra-ui/react'
+import { VStack, Text, Flex, Box, Button, Alert, AlertIcon } from '@chakra-ui/react'
 import { BiMenu } from 'react-icons/bi'
 import EditOrgs from '../../components/EditOrgs'
 import AddOrg from '../../components/AddOrg'
@@ -13,9 +13,9 @@ import OrgsList from '../../components/OrgsList'
 //    ├── EditOrgs
 //    │   ├── Button
 //    │   └── Modal
-//    │        └── OrgsList
+//    │        └── OrgsListEditable
 //    │            └── SortableList
-//    │                └── OrgsListItem
+//    │                └── OrgsListItemEditable
 //    │                    ├── OrgColorAction
 //    │                    ├── OrgAction (Delete)
 //    │                    └── OrgEditAction
@@ -50,22 +50,24 @@ const Popup = () => {
   }
 
   return (
-    <VStack p={5} w='500px' minH='220px'>
-      <Flex w='100%' mb={4} justifyContent='space-between'>
+    <VStack p={0} w='500px' minH='220px'>
+      <Flex w='100%' p={3} mb={4} backgroundColor='gray.100' justifyContent='space-between'>
         <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
         <Text
-          fontSize='2xl'
+          fontSize='lg'
           fontFamily="'ITC Avant Garde','Helvetica Neue'"
           color='#032d60'
-          fontWeight='bold'>Salesforce Orgs</Text>
+          fontWeight='bold'>Salesforce B2B Orgs</Text>
         <AddOrg addOrg={addOrg}/>
       </Flex>
-      <OrgsList items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
-      { error &&
-      <Alert status='error'>
-        <AlertIcon />Error: {error}
-      </Alert>
-      }
+      <Box w='100%' p={5}>
+        <OrgsList items={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+        { error &&
+        <Alert status='error'>
+          <AlertIcon />Error: {error}
+        </Alert>
+        }
+      </Box>
     </VStack>
   )
 }
