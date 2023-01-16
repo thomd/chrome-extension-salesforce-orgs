@@ -16,8 +16,8 @@ import { BiPlus } from 'react-icons/bi'
 import { TiChevronLeftOutline } from 'react-icons/ti'
 import { nanoid } from 'nanoid'
 import { SALESFORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
+import { defaultColor } from '../utils/color.js'
 import { Btn } from '.'
-
 
 function AddOrg({ addOrg }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -53,7 +53,8 @@ function AddOrg({ addOrg }) {
     setModalValue({
       id: nanoid(),
       name: '',
-      url: ''
+      url: '',
+      color: defaultColor
     })
   }
 

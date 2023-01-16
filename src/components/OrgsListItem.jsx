@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HStack, Text, Flex, Divider } from '@chakra-ui/react'
+import { HStack, Text, Box, Flex, Divider } from '@chakra-ui/react'
 import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiThSmall } from 'react-icons/ti'
 import { OrgAction } from '.'
 import { open } from '../utils/url.js'
@@ -26,7 +26,10 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
     <>
       <HStack w='100%' py={2}>
         <Flex w='100%' justifyContent='space-between'>
-          <Text fontSize='md' w='240px' noOfLines={1}>{org.name}</Text>
+          <Flex alignItems='center'>
+            <Box h={4} w={4} mr={3} bg={org.color} />
+            <Text fontSize='md' w='240px' noOfLines={1}>{org.name}</Text>
+          </Flex>
           <Flex color='gray.400' w='110px' justifyContent='space-between'>
             <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} />
             <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} />

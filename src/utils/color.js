@@ -9,4 +9,9 @@ const colors = [
     'purple.500',
 ]
 
-export { colors }
+const defaultColor = colors[0]
+
+export {
+    colors,
+    defaultColor,
+}
