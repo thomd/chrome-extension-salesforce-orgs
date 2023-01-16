@@ -24,7 +24,7 @@ function OrgColorAction({ org, editOrg }) {
   return (
     <Popover isOpen={isOpen} placement='right'>
       <PopoverTrigger>
-        <Box h={4} w={4} bg={orgValue.color} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
+        <Box h={4} w={4} bg={orgValue.color} borderRadius={4} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
       </PopoverTrigger>
       <PopoverContent w='auto' boxShadow='md'>
         <PopoverArrow />

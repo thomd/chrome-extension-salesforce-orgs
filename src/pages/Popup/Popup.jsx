@@ -57,7 +57,7 @@ const Popup = () => {
         <Text
           fontSize='xl'
           color='gray.400'
-          fontWeight='bold'>Salesforce B2B Orgs</Text>
+          fontWeight='bold'>Salesforce Orgs</Text>
         <AddOrg addOrg={addOrg}/>
       </Flex>
       <Box w='100%' p={4}>

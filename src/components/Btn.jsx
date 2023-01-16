@@ -8,7 +8,7 @@ function Btn({ icon, text, action, ...props }) {
       size='sm'
       variant='outline'
       bg='gray.50'
-      borderColor='gray.300'
+      boxShadow='base'
       _hover={{ bg: 'gray.200' }}
       onClick={action}
       {...props}
@@ -24,10 +24,11 @@ function Bttn({ icon, text, action, ...props }) {
       leftIcon={icon}
       size='sm'
       variant='solid'
-      bg='gray.200'
+      bg='gray.100'
+      boxShadow='base'
       border='1px solid'
-      borderColor='gray.400'
-      _hover={{ bg: 'gray.300' }}
+      borderColor='gray.300'
+      _hover={{ bg: 'gray.200' }}
       onClick={action}
       {...props}
     >
