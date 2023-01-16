@@ -44,5 +44,3 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
 }
 
 export default OrgsListItem
-
-

@@ -5,11 +5,12 @@ const colors = [
     'yellow.300',
     'green.500',
     'teal.400',
-    'blue.500',
+    '#00a1df',     // Salesforce Blue
+    //'blue.500',
     'purple.500',
 ]
 
-const defaultColor = colors[0]
+const defaultColor = colors[6]
 
 export {
     colors,

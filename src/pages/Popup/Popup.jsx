@@ -15,8 +15,11 @@ import { EditOrgs, AddOrg, OrgsList } from '../../components'
 //    │            └── SortableList
 //    │                └── OrgsListItemEditable
 //    │                    ├── OrgColorAction
-//    │                    ├── OrgAction (Delete)
+//    │                    ├── OrgAction:Delete
 //    │                    └── OrgEditAction
+//    │                        └── Modal
+//    │                            ├── Input
+//    │                            └── Input
 //    ├── AddOrg
 //    │   ├── Button
 //    │   └── Modal
@@ -24,10 +27,10 @@ import { EditOrgs, AddOrg, OrgsList } from '../../components'
 //    │       └── Input
 //    └── OrgsList
 //        └── OrgsListItem
-//            ├── OrgAction (Home)
-//            ├── OrgAction (Setup)
-//            ├── OrgAction (Developer Console)
-//            └── OrgAction (Store)
+//            ├── OrgAction:Home
+//            ├── OrgAction:Setup
+//            ├── OrgAction:DeveloperConsole
+//            └── OrgAction:Store
 //
 
 const Popup = () => {
@@ -50,7 +53,7 @@ const Popup = () => {
   return (
     <VStack p={0} w='500px' minH='220px'>
       <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='space-between'>
-        <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+        { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} /> }
         <Text
           fontSize='xl'
           color='gray.400'

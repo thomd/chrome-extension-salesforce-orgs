@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { HStack, Text, Flex } from '@chakra-ui/react'
 import { TiPencil, TiDelete, TiThSmall } from 'react-icons/ti'
 import { OrgColorAction, OrgAction, OrgEditAction } from '.'
@@ -6,14 +6,14 @@ import { OrgColorAction, OrgAction, OrgEditAction } from '.'
 function OrgsListItem({ org, deleteOrg, editOrg }) {
 
   return (
-    <>
-      <Flex color='gray.400' w='50px' justifyContent='space-between'>
-        <OrgAction icon={TiDelete} color='red.500' org={org} action={deleteOrg} />
-        <OrgEditAction org={org} editOrg={editOrg} />
+    <Fragment>
+      <Flex color='gray.400' mx={3} w='74px' justifyContent='space-between' alignItems='center'>
         <OrgColorAction org={org} editOrg={editOrg} />
+        <OrgAction icon={TiDelete} color='red.400' org={org} action={deleteOrg} />
+        <OrgEditAction org={org} editOrg={editOrg} />
       </Flex>
-      <Text fontSize='md' w='240px' noOfLines={1}>{org.name}</Text>
-    </>
+      <Text fontSize='md' ml={2} w='240px' noOfLines={1}>{org.name}</Text>
+    </Fragment>
   )
 }
 

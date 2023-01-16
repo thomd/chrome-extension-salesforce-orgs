@@ -3,13 +3,16 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalFooter,
   ModalBody,
-  ButtonGroup,
-  Input
+  Input,
+  Flex,
+  Box,
+  InputGroup,
+  InputLeftAddon,
 } from '@chakra-ui/react'
 import { TiChevronLeftOutline, TiPencil } from 'react-icons/ti'
+import { extractHost } from '../utils/url.js'
 import { OrgAction, Btn, Bttn } from '.'
 
 
@@ -25,7 +28,7 @@ function EditOrgAction({ org, editOrg }) {
   function handleEditSubmit(e) {
     e.preventDefault()
     editOrg(modalValue.id, modalValue)
-    setModalValue('')
+    setModalValue({})
     setIsOpen(false)
   }
 
@@ -47,38 +50,49 @@ function EditOrgAction({ org, editOrg }) {
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader fontSize='md'>Edit Your Org</ModalHeader>
           <form onSubmit={handleEditSubmit}>
-            <ModalBody>
-              <Input
-                size='sm'
-                mb={3}
-                value={modalValue.name}
-                key={modalValue.id}
-                variant='outline'
-                type='text'
-                onChange={handleNameChange}
-              />
-              <Input
-                size='sm'
-                value={modalValue.url}
-                key={modalValue.id}
-                variant='outline'
-                type='text'
-                onChange={handleUrlChange}
-              />
-            </ModalBody>
-            <ModalFooter>
-              <ButtonGroup size='sm' spacing='4'>
-                <Btn leftIcon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
+            <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='left'>
+              <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
+            </Flex>
+            <Box w='100%' p={4}>
+              <ModalBody p={0}>
+                <InputGroup size='sm'>
+                  <InputLeftAddon children='https://' />
+                  <Input
+                    size='sm'
+                    mb={3}
+                    value={modalValue.url}
+                    key={modalValue.id}
+                    variant='outline'
+                    type='text'
+                    placeholder='*.my.salesforce.com'
+                    _placeholder={{ opacity: 0.5 }}
+                    focusBorderColor='gray.400'
+                    onChange={handleUrlChange}
+                  />
+                </InputGroup>
+                <Input
+                  size='sm'
+                  mb={3}
+                  value={modalValue.name}
+                  key={modalValue.id}
+                  variant='outline'
+                  type='text'
+                  placeholder='Org Alias'
+                  _placeholder={{ opacity: 0.5 }}
+                  focusBorderColor='gray.400'
+                  onChange={handleNameChange}
+                />
+              </ModalBody>
+              <ModalFooter p={0}>
                 <Bttn text='Save' type='submit' />
-              </ButtonGroup>
-            </ModalFooter>
+              </ModalFooter>
+            </Box>
           </form>
         </ModalContent>
       </Modal>
     </>
-    )
-  }
+  )
+}
 
 export default EditOrgAction

@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ButtonGroup,
   Input,
   Flex,
 } from '@chakra-ui/react'
@@ -34,11 +33,9 @@ function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg }) {
         <ModalOverlay />
         <ModalContent>
           <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='left'>
-            <ButtonGroup size='sm' spacing='4'>
               <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
-            </ButtonGroup>
           </Flex>
-          <ModalBody p={0}>
+          <ModalBody p={4} mt={4}>
             <OrgsListEditable items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
           </ModalBody>
         </ModalContent>

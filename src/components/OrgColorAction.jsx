@@ -10,20 +10,21 @@ import {
 } from '@chakra-ui/react'
 import { colors } from '../utils/color'
 
-function OrgColorAction({ org }) {
+function OrgColorAction({ org, editOrg }) {
   const [isOpen, setIsOpen] = useBoolean()
-  const [selectedColor, setSelectedColor] = useState(colors[0])
+  const [orgValue, setOrgValue] = useState(org)
 
   const handleColorClick = color => {
     setIsOpen.toggle()
-    setSelectedColor(color)
-    console.log(color)
+    let updatedOrg ={ ...orgValue, color: color }
+    setOrgValue(updatedOrg)
+    editOrg(orgValue.id, updatedOrg)
   }
 
   return (
     <Popover isOpen={isOpen} placement='right'>
       <PopoverTrigger>
-        <Box h={4} w={4} bg={selectedColor} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
+        <Box h={4} w={4} bg={orgValue.color} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
       </PopoverTrigger>
       <PopoverContent w='auto' boxShadow='md'>
         <PopoverArrow />
@@ -33,7 +34,6 @@ function OrgColorAction({ org }) {
               key={`col-${index}`}
               h={4}
               w={4}
-              p={1}
               bg={color}
               _hover={{ cursor: 'pointer' }}
               onClick={() => handleColorClick(color)}

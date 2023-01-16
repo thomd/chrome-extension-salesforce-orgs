@@ -3,18 +3,19 @@ import {
   ModalOverlay,
   ModalContent,
   ModalBody,
+  ModalFooter,
   Input,
   Flex,
   Box,
   InputGroup,
-  InputLeftAddon
+  InputLeftAddon,
 } from '@chakra-ui/react'
 
 import React, { useState } from 'react'
 import { BiPlus } from 'react-icons/bi'
 import { TiChevronLeftOutline } from 'react-icons/ti'
 import { nanoid } from 'nanoid'
-import { SALESFORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
+import { SALESFORCE_HOST, FORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
 import { defaultColor } from '../utils/color.js'
 import { Btn, Bttn } from '.'
 
@@ -35,13 +36,13 @@ function AddOrg({ addOrg }) {
       formInvalid = true
     }
 
-    if (modalValue.url === '' || !modalValue.url.match(SALESFORCE_HOST)) {
+    if (modalValue.url === '' || (!modalValue.url.match(SALESFORCE_HOST) && !modalValue.url.match(FORCE_HOST))) {
       setUrlInvalid(true)
       formInvalid = true
     }
 
     if (!formInvalid) {
-      modalValue.url = sanitizeUrl(modalValue.url)
+      modalValue.url = extractHost(modalValue.url)
       addOrg(modalValue)
       setIsOpen(false)
     }
@@ -59,6 +60,9 @@ function AddOrg({ addOrg }) {
 
   function onClose() {
     setIsOpen(false)
+    setUrlInvalid(false)
+    setNameInvalid(false)
+    setModalValue({})
   }
 
   function handleUrlChange(ev) {
@@ -68,7 +72,7 @@ function AddOrg({ addOrg }) {
 
   function handleUrlBlur(ev) {
     let url = ev.target.value
-    if (url.match(SALESFORCE_HOST)) {
+    if (url.match(SALESFORCE_HOST) || url.match(FORCE_HOST)) {
       let name = extractName(url)
       setModalValue({ ...modalValue, name })
     } else {
@@ -88,12 +92,11 @@ function AddOrg({ addOrg }) {
         <ModalOverlay />
         <ModalContent>
           <form onSubmit={handleSubmit}>
-            <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='space-between'>
+            <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='left'>
               <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
-              <Bttn text='Add' type='submit' />
             </Flex>
             <Box w='100%' p={4}>
-              <ModalBody>
+              <ModalBody p={0}>
                 <InputGroup size='sm'>
                   <InputLeftAddon children='https://' />
                   <Input
@@ -124,6 +127,9 @@ function AddOrg({ addOrg }) {
                   onChange={handleNameChange}
                 />
               </ModalBody>
+              <ModalFooter p={0} mt={4}>
+                <Bttn text='Add' type='submit' />
+              </ModalFooter>
             </Box>
           </form>
         </ModalContent>

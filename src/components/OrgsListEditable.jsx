@@ -6,7 +6,7 @@ function OrgsListEditable({ items, setItems, deleteOrg, editOrg }) {
   return (
     <SortableList items={items} setItems={setItems}>
       {({ items }) => (
-        <VStack w='100%' color='grey.800'>
+        <VStack w='100%' color='gray.800'>
           {items.map((item) => (
             <Fragment key={item.id}>
               <SortableItem id={item.id}>
