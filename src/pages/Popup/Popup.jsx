@@ -51,7 +51,7 @@ const Popup = () => {
   }
 
   return (
-    <VStack p={0} w='500px' minH='220px'>
+    <VStack p={0} w='440px' minH='220px'>
       <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='space-between'>
         { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} /> }
         <Text
