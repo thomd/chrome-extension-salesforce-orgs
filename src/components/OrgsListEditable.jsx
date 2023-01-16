@@ -1,5 +1,5 @@
-import React from 'react'
-import { VStack, HStack } from '@chakra-ui/react'
+import React, { Fragment } from 'react'
+import { VStack, Divider } from '@chakra-ui/react'
 import { OrgsListItemEditable, SortableList, SortableItem } from '.'
 
 function OrgsListEditable({ items, setItems, deleteOrg, editOrg }) {
@@ -8,9 +8,12 @@ function OrgsListEditable({ items, setItems, deleteOrg, editOrg }) {
       {({ items }) => (
         <VStack w='100%' color='grey.800'>
           {items.map((item) => (
-            <SortableItem key={item.id} id={item.id}>
-              <OrgsListItemEditable key={item.id} org={item} deleteOrg={deleteOrg} editOrg={editOrg} />
-            </SortableItem>
+            <Fragment key={item.id}>
+              <SortableItem id={item.id}>
+                <OrgsListItemEditable org={item} deleteOrg={deleteOrg} editOrg={editOrg} />
+              </SortableItem>
+              <Divider orientation='horizontal' _last={{ display: 'none' }} />
+            </Fragment>
           ))}
         </VStack>
       )}

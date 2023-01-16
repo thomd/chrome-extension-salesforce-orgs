@@ -1,40 +1,13 @@
 import React from 'react'
-import {
-  DndContext,
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core'
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable'
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 function SortableList(props) {
   const { items, setItems, children, itemRender } = props
-
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  )
-
-  return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {children({ items })}
-      </SortableContext>
-    </DndContext>
-  )
+  const sensors = useSensors(useSensor(PointerSensor))
 
   function handleDragEnd(event) {
     const { active, over } = event
-
     if (active.id !== over.id) {
       setItems(items => {
         const ids = items.map(item => item.id)
@@ -44,6 +17,14 @@ function SortableList(props) {
       })
     }
   }
+
+  return (
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+        {children({ items })}
+      </SortableContext>
+    </DndContext>
+  )
 }
 
 export default SortableList
