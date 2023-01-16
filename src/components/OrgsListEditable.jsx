@@ -1,14 +1,6 @@
 import React from 'react'
-import { VStack } from '@chakra-ui/react'
-import { SortableList, SortableItem } from '@thaddeusjiang/react-sortable-list'
-import { TiThSmall } from 'react-icons/ti'
-import { OrgsListItemEditable } from '.'
-
-const DragHandler = (props) => (
-  <div {...props}>
-    <TiThSmall />
-  </div>
-)
+import { VStack, HStack } from '@chakra-ui/react'
+import { OrgsListItemEditable, SortableList, SortableItem } from '.'
 
 function OrgsListEditable({ items, setItems, deleteOrg, editOrg }) {
   return (
@@ -16,7 +8,7 @@ function OrgsListEditable({ items, setItems, deleteOrg, editOrg }) {
       {({ items }) => (
         <VStack w='100%' color='grey.800'>
           {items.map((item) => (
-            <SortableItem key={item.id} id={item.id} DragHandler={DragHandler}>
+            <SortableItem key={item.id} id={item.id}>
               <OrgsListItemEditable key={item.id} org={item} deleteOrg={deleteOrg} editOrg={editOrg} />
             </SortableItem>
           ))}

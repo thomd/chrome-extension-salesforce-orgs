@@ -30,7 +30,7 @@ function OrgColorAction({ org }) {
         <SimpleGrid columns={4} p={1} spacing={1}>
           {colors.map((color, index) => (
             <Box
-              key={`color-picker-${index}`}
+              key={`col-${index}`}
               h={4}
               w={4}
               p={1}

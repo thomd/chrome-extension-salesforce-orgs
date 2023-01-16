@@ -8,6 +8,8 @@ import OrgsListItem from './OrgsListItem'
 import OrgsListItemEditable from './OrgsListItemEditable'
 import OrgColorAction from './OrgColorAction'
 import OrgEditAction from './OrgEditAction'
+import SortableList from './SortableList'
+import SortableItem from './SortableItem'
 
 export {
     EditOrgs,
@@ -21,4 +23,6 @@ export {
     OrgsListItemEditable,
     OrgColorAction,
     OrgEditAction,
+    SortableList,
+    SortableItem,
 }
