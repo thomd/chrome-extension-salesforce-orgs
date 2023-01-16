@@ -24,9 +24,10 @@ function Bttn({ icon, text, action, ...props }) {
       leftIcon={icon}
       size='sm'
       variant='solid'
-      bg='gray.300'
-      borderColor='gray.300'
-      _hover={{ bg: 'gray.500' }}
+      bg='gray.200'
+      border='1px solid'
+      borderColor='gray.400'
+      _hover={{ bg: 'gray.300' }}
       onClick={action}
       {...props}
     >

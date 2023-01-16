@@ -6,7 +6,8 @@ import {
   ModalFooter,
   ModalBody,
   ButtonGroup,
-  Input
+  Input,
+  Flex,
 } from '@chakra-ui/react'
 
 import OrgAction from './OrgAction'
@@ -31,9 +32,13 @@ function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg }) {
       <Btn icon={<BiMenu/>} text='Edit' action={handleEditClick} />
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
-        <ModalContent p={5}>
+        <ModalContent>
+          <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='left'>
+            <ButtonGroup size='sm' spacing='4'>
+              <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
+            </ButtonGroup>
+          </Flex>
           <ModalBody p={0}>
-            <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
             <OrgsListEditable items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
           </ModalBody>
         </ModalContent>

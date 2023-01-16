@@ -2,11 +2,10 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
-  ButtonGroup,
   Input,
+  Flex,
+  Box,
   InputGroup,
   InputLeftAddon
 } from '@chakra-ui/react'
@@ -17,7 +16,7 @@ import { TiChevronLeftOutline } from 'react-icons/ti'
 import { nanoid } from 'nanoid'
 import { SALESFORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
 import { defaultColor } from '../utils/color.js'
-import { Btn } from '.'
+import { Btn, Bttn } from '.'
 
 function AddOrg({ addOrg }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -88,45 +87,44 @@ function AddOrg({ addOrg }) {
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader fontSize='md'>Add Salesforce Org</ModalHeader>
           <form onSubmit={handleSubmit}>
-            <ModalBody>
-              <InputGroup size='sm'>
-                <InputLeftAddon children='https://' />
+            <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='space-between'>
+              <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
+              <Bttn text='Add' type='submit' />
+            </Flex>
+            <Box w='100%' p={4}>
+              <ModalBody>
+                <InputGroup size='sm'>
+                  <InputLeftAddon children='https://' />
+                  <Input
+                    size='sm'
+                    mb={3}
+                    value={modalValue.url}
+                    key={modalValue.id}
+                    variant='outline'
+                    type='text'
+                    placeholder='*.my.salesforce.com'
+                    _placeholder={{ opacity: 0.5 }}
+                    isInvalid={urlInvalid}
+                    focusBorderColor='gray.400'
+                    onChange={handleUrlChange}
+                    onBlur={handleUrlBlur}
+                  />
+                </InputGroup>
                 <Input
                   size='sm'
-                  mb={3}
-                  value={modalValue.url}
+                  value={modalValue.name}
                   key={modalValue.id}
                   variant='outline'
                   type='text'
-                  placeholder='*.my.salesforce.com'
+                  placeholder='Org Alias'
                   _placeholder={{ opacity: 0.5 }}
-                  isInvalid={urlInvalid}
+                  isInvalid={nameInvalid}
                   focusBorderColor='gray.400'
-                  onChange={handleUrlChange}
-                  onBlur={handleUrlBlur}
+                  onChange={handleNameChange}
                 />
-              </InputGroup>
-              <Input
-                size='sm'
-                value={modalValue.name}
-                key={modalValue.id}
-                variant='outline'
-                type='text'
-                placeholder='Org Alias'
-                _placeholder={{ opacity: 0.5 }}
-                isInvalid={nameInvalid}
-                focusBorderColor='gray.400'
-                onChange={handleNameChange}
-              />
-            </ModalBody>
-            <ModalFooter>
-              <ButtonGroup size='sm' spacing='4'>
-                <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
-                <Btn text='Add' type='submit' />
-              </ButtonGroup>
-            </ModalFooter>
+              </ModalBody>
+            </Box>
           </form>
         </ModalContent>
       </Modal>
