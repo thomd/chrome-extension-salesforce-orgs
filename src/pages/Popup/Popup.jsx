@@ -49,16 +49,15 @@ const Popup = () => {
 
   return (
     <VStack p={0} w='500px' minH='220px'>
-      <Flex w='100%' p={3} mb={4} backgroundColor='gray.100' justifyContent='space-between'>
+      <Flex w='100%' p={3} mb={0} backgroundColor='gray.100' justifyContent='space-between'>
         <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
         <Text
-          fontSize='lg'
-          fontFamily="'ITC Avant Garde','Helvetica Neue'"
-          color='#032d60'
+          fontSize='xl'
+          color='gray.400'
           fontWeight='bold'>Salesforce B2B Orgs</Text>
         <AddOrg addOrg={addOrg}/>
       </Flex>
-      <Box w='100%' p={5}>
+      <Box w='100%' p={4}>
         <OrgsList items={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
         { error &&
         <Alert status='error'>
