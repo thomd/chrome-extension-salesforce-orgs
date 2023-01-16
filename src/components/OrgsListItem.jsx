@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { HStack, Text, Box, Flex, Divider } from '@chakra-ui/react'
 import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiThSmall } from 'react-icons/ti'
 import { OrgAction } from '.'
-import { open } from '../utils/url.js'
+import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl } from '../utils/url.js'
 
 function OrgsListItem({ org, deleteOrg, editOrg }) {
 
@@ -11,15 +11,15 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
   }
 
   function openSetup(org) {
-    open(org.url)
+    open(getSetupUrl(org.url))
   }
 
   function openDeveloperConsole(org) {
-    open(org.url)
+    open(getDeveloperConsoleUrl(org.url))
   }
 
   function openStore(org) {
-    open(org.url)
+    open(getStoreUrl(org.url))
   }
 
   return (

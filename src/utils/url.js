@@ -17,16 +17,21 @@ const extractHost = url => {
     return sanitizeUrl(url).replace(/https:\/\//, '')
 }
 
-const extractName = url => {
+const extractInstanceName = url => {
     url = sanitizeUrl(url)
     name = ''
     if (url.match(FORCE_HOST)) {
-        name = url.replace(/https:\/\/(.+?)(\.sandbox)?\.lightning\.force\.com$/, '$1')
+        name = url.replace(/https:\/\/(.+?)\.lightning\.force\.com$/, '$1')
     }
     if (url.match(SALESFORCE_HOST)) {
-        name = url.replace(/https:\/\/(.+?)(\.sandbox)?\.my\.salesforce\.com$/, '$1')
+        name = url.replace(/https:\/\/(.+?)\.my\.salesforce\.com$/, '$1')
     }
     return name
+}
+
+const extractName = url => {
+    name = extractInstanceName(url)
+    return name.replace(/\.sandbox/, '')
 }
 
 function open(url) {
@@ -42,6 +47,18 @@ function open(url) {
     })
 }
 
+function getSetupUrl(url) {
+    return extractHost(url) + '/lightning/setup/SetupOneHome/home'
+}
+
+function getDeveloperConsoleUrl(url) {
+    return extractHost(url) + '/_ui/common/apex/debug/ApexCSIPage'
+}
+
+function getStoreUrl(url) {
+    return extractInstanceName(url) + '.my.site.com/'
+}
+
 export {
     SALESFORCE_HOST,
     FORCE_HOST,
@@ -49,4 +66,8 @@ export {
     extractHost,
     extractName,
     open,
+    getSetupUrl,
+    getDeveloperConsoleUrl,
+    getStoreUrl,
 }
+
