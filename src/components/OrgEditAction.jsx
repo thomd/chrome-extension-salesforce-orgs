@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {
   Modal,
   ModalOverlay,
@@ -5,15 +6,11 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  Box,
-  Button,
   ButtonGroup,
   Input
 } from '@chakra-ui/react'
-
-import OrgAction from './OrgAction'
-import React, { useState } from 'react'
 import { TiChevronLeftOutline, TiPencil } from 'react-icons/ti'
+import { OrgAction, Btn, Bttn } from '.'
 
 
 function EditOrgAction({ org, editOrg }) {
@@ -73,8 +70,8 @@ function EditOrgAction({ org, editOrg }) {
             </ModalBody>
             <ModalFooter>
               <ButtonGroup size='sm' spacing='4'>
-                <Button leftIcon={<TiChevronLeftOutline />} variant='outline' onClick={onClose}>Back</Button>
-                <Button type='submit'>Update</Button>
+                <Btn leftIcon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
+                <Bttn text='Save' type='submit' />
               </ButtonGroup>
             </ModalFooter>
           </form>

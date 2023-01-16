@@ -2,7 +2,7 @@ import React from 'react'
 import { VStack } from '@chakra-ui/react'
 import { SortableList, SortableItem } from '@thaddeusjiang/react-sortable-list'
 import { TiThSmall } from 'react-icons/ti'
-import OrgsListItemEditable from './OrgsListItemEditable'
+import { OrgsListItemEditable } from '.'
 
 const DragHandler = (props) => (
   <div {...props}>

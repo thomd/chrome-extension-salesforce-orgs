@@ -1,15 +1,7 @@
-import {
-  HStack,
-  Text,
-  Flex,
-  Divider,
-} from '@chakra-ui/react'
-
-import { TiPencil, TiDelete, TiThSmall } from 'react-icons/ti'
 import React from 'react'
-import OrgColorAction from './OrgColorAction'
-import OrgAction from './OrgAction'
-import OrgEditAction from './OrgEditAction'
+import { HStack, Text, Flex, Divider } from '@chakra-ui/react'
+import { TiPencil, TiDelete, TiThSmall } from 'react-icons/ti'
+import { OrgColorAction, OrgAction, OrgEditAction } from '.'
 
 function OrgsListItem({ org, deleteOrg, editOrg }) {
 

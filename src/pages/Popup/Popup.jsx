@@ -2,9 +2,7 @@ import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
 import { VStack, Text, Flex, Box, Button, Alert, AlertIcon } from '@chakra-ui/react'
 import { BiMenu } from 'react-icons/bi'
-import EditOrgs from '../../components/EditOrgs'
-import AddOrg from '../../components/AddOrg'
-import OrgsList from '../../components/OrgsList'
+import { EditOrgs, AddOrg, OrgsList } from '../../components'
 
 //
 // Component Structure:

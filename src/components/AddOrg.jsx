@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  Button,
   ButtonGroup,
   Input,
   InputGroup,
@@ -17,6 +16,7 @@ import { BiPlus } from 'react-icons/bi'
 import { TiChevronLeftOutline } from 'react-icons/ti'
 import { nanoid } from 'nanoid'
 import { SALESFORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
+import { Btn } from '.'
 
 
 function AddOrg({ addOrg }) {
@@ -83,7 +83,7 @@ function AddOrg({ addOrg }) {
 
   return (
     <>
-      <Button leftIcon={<BiPlus />} size='sm' variant='outline' borderColor='gray.300' onClick={handleAddClick}>Add Org</Button>
+      <Btn icon={<BiPlus/>} text='Add Org' action={handleAddClick} />
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
@@ -122,8 +122,8 @@ function AddOrg({ addOrg }) {
             </ModalBody>
             <ModalFooter>
               <ButtonGroup size='sm' spacing='4'>
-                <Button leftIcon={<TiChevronLeftOutline />} variant='outline' onClick={onClose}>Back</Button>
-                <Button type='submit'>Add</Button>
+                <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
+                <Btn text='Add' type='submit' />
               </ButtonGroup>
             </ModalFooter>
           </form>

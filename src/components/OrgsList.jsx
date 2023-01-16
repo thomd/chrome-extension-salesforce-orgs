@@ -1,5 +1,5 @@
 import React from 'react'
-import OrgsListItem from './OrgsListItem'
+import { OrgsListItem } from '.'
 
 function OrgsList({ items, deleteOrg, editOrg }) {
   return (
