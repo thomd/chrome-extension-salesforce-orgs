@@ -13,7 +13,8 @@
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Shift+Command+S"
+        "windows": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
       }
     }
   },
