@@ -12,7 +12,7 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
         <OrgAction icon={TiDelete} color='red.400' org={org} action={deleteOrg} />
         <OrgEditAction org={org} editOrg={editOrg} />
       </Flex>
-      <Text fontSize='md' ml={2} w='240px' noOfLines={1}>{org.name}</Text>
+      <Text fontSize='md' ml={2} fontWeight='bold' color='gray.600' w='240px' noOfLines={1}>{org.name}</Text>
     </Fragment>
   )
 }

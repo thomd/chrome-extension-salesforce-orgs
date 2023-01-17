@@ -4,12 +4,13 @@ import React, { useState } from 'react'
 function Btn({ icon, text, action, ...props }) {
   return (
     <Button
-      leftIcon={icon}
       size='sm'
+      leftIcon={icon}
       variant='outline'
-      bg='gray.50'
-      boxShadow='base'
-      _hover={{ bg: 'gray.200' }}
+      bg='sf.btnsbg'
+      color='sf.btnstc'
+      borderColor='sf.btnsbc'
+      _hover={{ opacity: 0.7 }}
       onClick={action}
       {...props}
     >
@@ -24,11 +25,10 @@ function Bttn({ icon, text, action, ...props }) {
       leftIcon={icon}
       size='sm'
       variant='solid'
-      bg='gray.100'
-      boxShadow='base'
-      border='1px solid'
-      borderColor='gray.300'
-      _hover={{ bg: 'gray.200' }}
+      bg='sf.btnpbg'
+      color='sf.btnptc'
+      borderColor='sf.btnpbc'
+      _hover={{ opacity: 0.7 }}
       onClick={action}
       {...props}
     >

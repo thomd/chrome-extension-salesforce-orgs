@@ -10,6 +10,9 @@ import OrgColorAction from './OrgColorAction'
 import OrgEditAction from './OrgEditAction'
 import SortableList from './SortableList'
 import SortableItem from './SortableItem'
+import Head from './Head'
+import HeadLine from './HeadLine'
+import IconAction from './IconAction'
 
 export {
     EditOrgs,
@@ -25,4 +28,7 @@ export {
     OrgEditAction,
     SortableList,
     SortableItem,
+    Head,
+    HeadLine,
+    IconAction,
 }

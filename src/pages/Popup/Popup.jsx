@@ -2,7 +2,7 @@ import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
 import { VStack, Text, Flex, Box, Button, Alert, AlertIcon } from '@chakra-ui/react'
 import { BiMenu } from 'react-icons/bi'
-import { EditOrgs, AddOrg, OrgsList } from '../../components'
+import { EditOrgs, AddOrg, OrgsList, Head, HeadLine } from '../../components'
 
 //
 // Component Structure:
@@ -52,14 +52,11 @@ const Popup = () => {
 
   return (
     <VStack p={0} w='440px' minH='220px'>
-      <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='space-between'>
-        { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} /> }
-        <Text
-          fontSize='xl'
-          color='gray.400'
-          fontWeight='bold'>Salesforce Orgs</Text>
+      <Head>
+        <HeadLine text='Salesforce Orgs' />
         <AddOrg addOrg={addOrg}/>
-      </Flex>
+        { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} /> }
+      </Head>
       <Box w='100%' p={4}>
         <OrgsList items={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
         { error &&

@@ -10,8 +10,24 @@
     "default_popup": "popup.html",
     "default_icon": "icon-256.png"
   },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Shift+Command+S"
+      }
+    }
+  },
+  "host_permissions": [
+    "https://*.documentforce.com/",
+    "https://*.force.com/",
+    "https://*.salesforce-communities.com/",
+    "https://*.salesforce.com/",
+    "https://*.visualforce.com/"
+  ],
   "permissions": [
     "storage",
+    "scripting",
+    "webNavigation",
     "tabs"
   ],
   "icons": {

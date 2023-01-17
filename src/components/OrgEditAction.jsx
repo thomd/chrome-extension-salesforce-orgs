@@ -6,14 +6,13 @@ import {
   ModalFooter,
   ModalBody,
   Input,
-  Flex,
   Box,
   InputGroup,
   InputLeftAddon,
 } from '@chakra-ui/react'
-import { TiChevronLeftOutline, TiPencil } from 'react-icons/ti'
-import { extractHost } from '../utils/url.js'
-import { OrgAction, Btn, Bttn } from '.'
+import { TiPencil } from 'react-icons/ti'
+import { BiX } from 'react-icons/bi'
+import { OrgAction, Bttn, Head, HeadLine, IconAction } from '.'
 
 
 function EditOrgAction({ org, editOrg }) {
@@ -51,9 +50,10 @@ function EditOrgAction({ org, editOrg }) {
         <ModalOverlay />
         <ModalContent>
           <form onSubmit={handleEditSubmit}>
-            <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='left'>
-              <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
-            </Flex>
+            <Head>
+              <HeadLine text='Salesforce Orgs' />
+              <IconAction icon={BiX} action={onClose} />
+            </Head>
             <Box w='100%' p={4}>
               <ModalBody p={0}>
                 <InputGroup size='sm'>

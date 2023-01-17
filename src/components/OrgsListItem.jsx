@@ -28,7 +28,7 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
         <Flex w='100%' justifyContent='space-between'>
           <Flex alignItems='center'>
             <Box h={4} w={4} mr={3} bg={org.color} borderRadius={4} />
-            <Text fontSize='md' w='240px' noOfLines={1}>{org.name}</Text>
+            <Text fontSize='md' fontWeight='bold' color='gray.600' w='240px' noOfLines={1}>{org.name}</Text>
           </Flex>
           <Flex color='gray.400' w='110px' justifyContent='space-between'>
             <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} />

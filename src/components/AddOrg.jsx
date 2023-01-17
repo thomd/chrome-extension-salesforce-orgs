@@ -12,12 +12,11 @@ import {
 } from '@chakra-ui/react'
 
 import React, { useState } from 'react'
-import { BiPlus } from 'react-icons/bi'
-import { TiChevronLeftOutline } from 'react-icons/ti'
+import { BiPlus, BiX } from 'react-icons/bi'
 import { nanoid } from 'nanoid'
-import { SALESFORCE_HOST, FORCE_HOST, sanitizeUrl, extractHost, extractName } from '../utils/url.js'
+import { SALESFORCE_HOST, FORCE_HOST, extractHost, extractName } from '../utils/url.js'
 import { defaultColor } from '../utils/color.js'
-import { Btn, Bttn } from '.'
+import { Btn, Bttn, IconAction, Head, HeadLine } from '.'
 
 function AddOrg({ addOrg }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -92,9 +91,10 @@ function AddOrg({ addOrg }) {
         <ModalOverlay />
         <ModalContent>
           <form onSubmit={handleSubmit}>
-            <Flex w='100%' p={3} mb={0} bg='gray.100' justifyContent='left'>
-              <Btn icon={<TiChevronLeftOutline/>} text='Back' action={onClose} />
-            </Flex>
+            <Head>
+              <HeadLine text='Salesforce Orgs' />
+              <IconAction icon={BiX} action={onClose} />
+            </Head>
             <Box w='100%' p={4}>
               <ModalBody p={0}>
                 <InputGroup size='sm'>
