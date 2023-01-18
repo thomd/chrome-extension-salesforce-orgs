@@ -51,7 +51,7 @@ function EditOrgAction({ org, editOrg }) {
         <ModalContent>
           <form onSubmit={handleEditSubmit}>
             <Head>
-              <HeadLine text='Salesforce Orgs' />
+              <HeadLine text='Edit Salesforce Org' />
               <IconAction icon={BiX} action={onClose} />
             </Head>
             <Box w='100%' p={4}>

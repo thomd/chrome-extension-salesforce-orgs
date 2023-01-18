@@ -59,6 +59,10 @@ function getStoreUrl(url) {
     return extractInstanceName(url) + '.my.site.com/'
 }
 
+function getExperienceBuilderUrl(url) {
+    return extractInstanceName(url) + '.builder.salesforce-experience.com/sfsites/picasso/core/config/commeditor.jsp'
+}
+
 export {
     SALESFORCE_HOST,
     FORCE_HOST,
@@ -69,5 +73,6 @@ export {
     getSetupUrl,
     getDeveloperConsoleUrl,
     getStoreUrl,
+    getExperienceBuilderUrl,
 }
 

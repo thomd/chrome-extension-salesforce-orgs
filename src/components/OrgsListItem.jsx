@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { HStack, Text, Box, Flex, Divider } from '@chakra-ui/react'
-import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiThSmall } from 'react-icons/ti'
+import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiImageOutline } from 'react-icons/ti'
 import { OrgAction } from '.'
-import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl } from '../utils/url.js'
+import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl, getExperienceBuilderUrl } from '../utils/url.js'
 
 function OrgsListItem({ org, deleteOrg, editOrg }) {
 
@@ -12,6 +12,10 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
 
   function openSetup(org) {
     open(getSetupUrl(org.url))
+  }
+
+  function openExperienceBuilder(org) {
+    open(getExperienceBuilderUrl(org.url))
   }
 
   function openDeveloperConsole(org) {
@@ -30,11 +34,12 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
             <Box h={4} w={4} mr={3} bg={org.color} borderRadius={4} />
             <Text fontSize='md' fontWeight='bold' color='gray.600' w='240px' noOfLines={1}>{org.name}</Text>
           </Flex>
-          <Flex color='gray.400' w='110px' justifyContent='space-between'>
+          <Flex color='gray.400' w='140px' justifyContent='space-between' alignItems='center'>
             <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} />
+            <OrgAction icon={TiImageOutline} color='black' org={org} action={openExperienceBuilder} />
+            <OrgAction icon={TiShoppingCart} color='black' org={org} action={openStore} />
             <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} />
             <OrgAction icon={TiDocumentText} color='black' org={org} action={openDeveloperConsole} />
-            <OrgAction icon={TiShoppingCart} color='black' org={org} action={openStore} />
           </Flex>
         </Flex>
       </HStack>

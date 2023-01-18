@@ -21,7 +21,7 @@ function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg }) {
         <ModalOverlay />
         <ModalContent>
           <Head>
-            <HeadLine text='Salesforce Orgs' />
+            <HeadLine text='Edit Salesforce Orgs' />
             <IconAction icon={BiX} action={onClose} />
           </Head>
           <ModalBody p={4} mt={4}>

@@ -15,7 +15,7 @@ function SortableItem(props) {
 
   return (
     <Flex ref={setNodeRef} style={style} w='100%' alignItems='center'>
-      <Box w={4} h={4} color='gray.400' {...attributes} {...listeners}>
+      <Box w={4} h={4} color='gray.400' _hover={{ cursor: 'grab' }} {...attributes} {...listeners}>
         <IconContext.Provider value={{ size: '100%' }}>
           <TiThSmall />
         </IconContext.Provider>
