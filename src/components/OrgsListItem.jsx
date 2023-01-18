@@ -35,11 +35,11 @@ function OrgsListItem({ org }) {
             <Text fontSize='md' fontWeight='bold' color='gray.600' w='240px' noOfLines={1}>{org.name}</Text>
           </Flex>
           <Flex color='gray.400' w='140px' justifyContent='space-between' alignItems='center'>
-            <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} />
-            <OrgAction icon={TiImageOutline} color='black' org={org} action={openExperienceBuilder} />
-            <OrgAction icon={TiShoppingCart} color='black' org={org} action={openStore} />
-            <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} />
-            <OrgAction icon={TiDocumentText} color='black' org={org} action={openDeveloperConsole} />
+            <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} label='Home' />
+            <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} label='Setup' />
+            <OrgAction icon={TiDocumentText} color='black' org={org} action={openDeveloperConsole} label='Developer Console' />
+            <OrgAction icon={TiImageOutline} color='black' org={org} action={openExperienceBuilder} label='Experience Builder' />
+            <OrgAction icon={TiShoppingCart} color='black' org={org} action={openStore} label='Store' />
           </Flex>
         </Flex>
       </HStack>
