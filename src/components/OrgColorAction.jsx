@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Box,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverArrow,
-  SimpleGrid,
-  useBoolean,
-} from '@chakra-ui/react'
+import { Box, Popover, PopoverTrigger, PopoverContent, PopoverArrow, SimpleGrid, useBoolean } from '@chakra-ui/react'
 import { colors } from '../utils/color'
 
 function OrgColorAction({ org, editOrg }) {

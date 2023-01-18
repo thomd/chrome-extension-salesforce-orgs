@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { HStack, Text, Box, Flex, Divider } from '@chakra-ui/react'
 import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiImageOutline } from 'react-icons/ti'
 import { OrgAction } from '.'
 import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl, getExperienceBuilderUrl } from '../utils/url.js'
 
-function OrgsListItem({ org, deleteOrg, editOrg }) {
+function OrgsListItem({ org }) {
 
   function openHome(org) {
     open(org.url)

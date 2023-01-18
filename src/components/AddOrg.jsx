@@ -5,7 +5,6 @@ import {
   ModalBody,
   ModalFooter,
   Input,
-  Flex,
   Box,
   InputGroup,
   InputLeftAddon,
@@ -92,7 +91,7 @@ function AddOrg({ addOrg }) {
         <ModalContent>
           <form onSubmit={handleSubmit}>
             <Head>
-              <HeadLine text='Salesforce Orgs' />
+              <HeadLine text='Add Salesforce Org' />
               <IconAction icon={BiX} action={onClose} />
             </Head>
             <Box w='100%' p={4}>

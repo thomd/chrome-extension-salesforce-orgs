@@ -58,7 +58,7 @@ const Popup = () => {
         { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} /> }
       </Head>
       <Box w='100%' p={4}>
-        <OrgsList items={orgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+        <OrgsList items={orgs} />
         { error &&
         <Alert status='error'>
           <AlertIcon />Error: {error}

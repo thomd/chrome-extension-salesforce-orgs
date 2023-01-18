@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import { HStack, Text, Flex } from '@chakra-ui/react'
-import { TiPencil, TiDelete, TiThSmall } from 'react-icons/ti'
+import { Text, Flex } from '@chakra-ui/react'
+import { TiDelete } from 'react-icons/ti'
 import { OrgColorAction, OrgAction, OrgEditAction } from '.'
 
-function OrgsListItem({ org, deleteOrg, editOrg }) {
+function OrgsListItemEditable({ org, deleteOrg, editOrg }) {
 
   return (
     <Fragment>
@@ -17,6 +17,6 @@ function OrgsListItem({ org, deleteOrg, editOrg }) {
   )
 }
 
-export default OrgsListItem
+export default OrgsListItemEditable
 
 
