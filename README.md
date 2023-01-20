@@ -1,7 +1,9 @@
 
 # Chrome Extension for Managing Salesforce Orgs
 
-<div><img src="src/assets/img/icon-128.png" width="64"/> This extension is not distributed via the Chrome Web Store. Install it manually.</div>
+<img src="src/assets/img/icon-128.png" width="64"/>
+
+This extension is not distributed via the Chrome Web Store. Install it manually.
 
 ## Install
 
@@ -21,6 +23,6 @@ Open extension on any page using the key shortcut `Command + Shift + S`.
 
 ## Development
 
-The extension uses React components from [Chakra UI](https://chakra-ui.com/).
+The extension uses **React** components from [Chakra UI](https://chakra-ui.com/).
 
     npm start
