@@ -1,8 +1,6 @@
 
 # Chrome Extension for Managing Salesforce Orgs
 
-<img src="src/assets/img/icon-128.png" width="64"/>
-
 This extension is not distributed via the Chrome Web Store. Install it manually.
 
 ## Install
