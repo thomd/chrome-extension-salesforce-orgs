@@ -20,3 +20,5 @@
 # secrets
 secrets.*.js
 src/assets/img/*.svg
+.vscode
+package-lock.json
