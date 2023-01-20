@@ -49,7 +49,7 @@ function AddOrg({ addOrg }) {
   function handleAddClick() {
     setIsOpen(true)
     setModalValue({
-      id: nanoid(),
+      id: `sf-${nanoid()}`,
       name: '',
       url: '',
       color: defaultColor
