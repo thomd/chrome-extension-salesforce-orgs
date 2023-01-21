@@ -1,16 +1,18 @@
 
 const SALESFORCE_HOST = /.+\.my\.salesforce\.com$/
 const FORCE_HOST = /.+\.lightning\.force\.com$/
+const SITE_HOST = /.+\.my\.site\.com$/
+const EXP_BUILDER_HOST = /.+\.builder\.salesforce-experience\.com$/
 
 const sanitizeUrl = url => {
-    url = url.replace(/\/$/, '')
-    if (url.match(/^https:\/\//)) {
-        return url
-    }
-    if (url.match(/^http:\/\//)) {
-        return url.replace(/^http:/, 'https:')
-    }
+    url = url.replace(/^https?:\/\//, '')
+    url = url.replace(/\/.*$/, '')
     return 'https://' + url
+}
+
+const isSalesforceUrl = url => {
+    const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')
+    return SALESFORCE_HOST.test(host) || FORCE_HOST.test(host) || SITE_HOST.test(host) || EXP_BUILDER_HOST.test(host)
 }
 
 const extractHost = url => {
@@ -26,6 +28,12 @@ const extractInstanceName = url => {
     if (url.match(SALESFORCE_HOST)) {
         name = url.replace(/https:\/\/(.+?)\.my\.salesforce\.com$/, '$1')
     }
+    if (url.match(SITE_HOST)) {
+        name = url.replace(/https:\/\/(.+?)\.my\.site\.com$/, '$1')
+    }
+    if (url.match(EXP_BUILDER_HOST)) {
+        name = url.replace(/https:\/\/(.+?)\.builder\.salesforce-experience\.com$/, '$1')
+    }
     return name
 }
 
@@ -34,9 +42,15 @@ const extractName = url => {
     return name.replace(/\.sandbox/, '')
 }
 
-function open(url) {
+const currentUrl = async () => {
+    let tabs = await chrome.tabs.query({ active: true, lastFocusedWindow: true })
+    let tab = tabs[0]
+    return tab.url === 'chrome://newtab/' ? '' : isSalesforceUrl(tab.url) ? sanitizeUrl(tab.url) : ''
+}
+
+const open = url => {
     url = 'https://' + url
-    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
         let tab = tabs[0]
         if (tab.url === 'chrome://newtab/') {
             window.close()
@@ -47,28 +61,22 @@ function open(url) {
     })
 }
 
-function getSetupUrl(url) {
-    return extractHost(url) + '/lightning/setup/SetupOneHome/home'
-}
+const getSetupUrl = url => extractHost(url) + '/lightning/setup/SetupOneHome/home'
 
-function getDeveloperConsoleUrl(url) {
-    return extractHost(url) + '/_ui/common/apex/debug/ApexCSIPage'
-}
+const getDeveloperConsoleUrl = url => extractHost(url) + '/_ui/common/apex/debug/ApexCSIPage'
 
-function getStoreUrl(url) {
-    return extractInstanceName(url) + '.my.site.com/'
-}
+const getStoreUrl = url => extractInstanceName(url) + '.my.site.com/'
 
-function getExperienceBuilderUrl(url) {
-    return extractInstanceName(url) + '.builder.salesforce-experience.com/sfsites/picasso/core/config/commeditor.jsp'
-}
+const getExperienceBuilderUrl = url => extractInstanceName(url) + '.builder.salesforce-experience.com/sfsites/picasso/core/config/commeditor.jsp'
 
 export {
     SALESFORCE_HOST,
     FORCE_HOST,
     sanitizeUrl,
     extractHost,
+    isSalesforceUrl,
     extractName,
+    currentUrl,
     open,
     getSetupUrl,
     getDeveloperConsoleUrl,

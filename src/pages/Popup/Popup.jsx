@@ -5,7 +5,7 @@ import { BiMenu } from 'react-icons/bi'
 import { EditOrgs, AddOrg, OrgsList, Head, HeadLine } from '../../components'
 
 //
-// Component Structure:
+// Components Structure:
 //
 //    Popup
 //    ├── EditOrgs

@@ -19,11 +19,7 @@
     }
   },
   "host_permissions": [
-    "https://*.documentforce.com/",
-    "https://*.force.com/",
-    "https://*.salesforce-communities.com/",
-    "https://*.salesforce.com/",
-    "https://*.visualforce.com/"
+    "<all_urls>"
   ],
   "permissions": [
     "storage",
@@ -40,9 +36,10 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*",
-        "<all_urls>"
+        "https://*.salesforce.com/*",
+        "https://*.site.com/*",
+        "https://*.salesforce-experience.com/*",
+        "https://*.force.com/*"
       ],
       "js": [
         "contentScript.bundle.js"

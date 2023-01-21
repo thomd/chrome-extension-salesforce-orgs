@@ -1,21 +1,10 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalBody,
-  ModalFooter,
-  Input,
-  Box,
-  InputGroup,
-  InputLeftAddon,
-} from '@chakra-ui/react'
-
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Modal, ModalOverlay, ModalContent, ModalBody, ModalFooter, Input, Box, InputGroup, InputLeftAddon } from '@chakra-ui/react'
+import { Btn, Bttn, IconAction, Head, HeadLine } from '.'
 import { BiPlus, BiX } from 'react-icons/bi'
 import { nanoid } from 'nanoid'
-import { SALESFORCE_HOST, FORCE_HOST, extractHost, extractName } from '../utils/url.js'
-import { defaultColor } from '../utils/color.js'
-import { Btn, Bttn, IconAction, Head, HeadLine } from '.'
+import { SALESFORCE_HOST, FORCE_HOST, extractHost, extractName, currentUrl } from '../utils/url.js'
+import { defaultOrgColor } from '../utils/color.js'
 
 function AddOrg({ addOrg }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -46,13 +35,15 @@ function AddOrg({ addOrg }) {
     }
   }
 
-  function handleAddClick() {
+  async function handleAddClick() {
     setIsOpen(true)
+    const url = await currentUrl()
+    const name = url === '' ? '' : extractName(url)
     setModalValue({
       id: `sf-${nanoid()}`,
-      name: '',
-      url: '',
-      color: defaultColor
+      name: name,
+      url: url,
+      color: defaultOrgColor
     })
   }
 

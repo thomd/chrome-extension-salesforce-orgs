@@ -1,6 +1,9 @@
-console.log('one')
+import { updateFavicon } from '../../utils/favicon'
 
-window.onload = () => {
-    console.log('two')
+if (document.readyState === 'complete') {
+    updateFavicon()
+} else {
+    window['onload'] = function () {
+        updateFavicon()
+    }
 }
-

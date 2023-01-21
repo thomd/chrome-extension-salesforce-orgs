@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Box, Popover, PopoverTrigger, PopoverContent, PopoverArrow, SimpleGrid, useBoolean } from '@chakra-ui/react'
-import { colors } from '../utils/color'
+import { orgColors } from '../utils/color'
+import { updateFavicon } from '../utils/favicon'
+import { isSalesforceUrl } from '../utils/url'
 
 function OrgColorAction({ org, editOrg }) {
   const [isOpen, setIsOpen] = useBoolean()
@@ -11,6 +13,14 @@ function OrgColorAction({ org, editOrg }) {
     let updatedOrg ={ ...orgValue, color: color }
     setOrgValue(updatedOrg)
     editOrg(orgValue.id, updatedOrg)
+    chrome.tabs.query({ lastFocusedWindow: true }, function(tabs) {
+        tabs.filter(tab => isSalesforceUrl(tab.url)).forEach(tab => {
+            chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                function: updateFavicon
+            })
+        })
+    })
   }
 
   return (
@@ -20,8 +30,8 @@ function OrgColorAction({ org, editOrg }) {
       </PopoverTrigger>
       <PopoverContent w='auto' boxShadow='md'>
         <PopoverArrow />
-        <SimpleGrid columns={4} p={1} spacing={1}>
-          {colors.map((color, index) => (
+        <SimpleGrid columns={5} p={1} spacing={1}>
+          {orgColors.map((color, index) => (
             <Box
               key={`col-${index}`}
               h={4}
