@@ -1,9 +1,23 @@
 
 # Chrome Extension for Managing Salesforce Orgs
 
+This extension is not distributed via the Chrome Web Store. Install it manually.
+
+## Features
+
+### Add New Salesforce Org
+
 <img src="images/extension2.png" width="400">
 
-This extension is not distributed via the Chrome Web Store. Install it manually.
+### Edit Org
+
+Favicon of an Org is colored as defined
+
+<img src="images/extension3.png" width="400">
+
+### Open Different Pages of an Org
+
+<img src="images/extension4.png" width="400">
 
 ## Install
 
