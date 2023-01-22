@@ -51,7 +51,7 @@ const Popup = () => {
   }
 
   return (
-    <VStack p={0} w='440px' minH='220px'>
+    <VStack p={0} w='440px' minH='230px'>
       <Head>
         <HeadLine text='Salesforce Orgs' />
         <AddOrg addOrg={addOrg}/>

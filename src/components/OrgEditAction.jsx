@@ -1,15 +1,5 @@
-import React, { useState } from 'react'
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalFooter,
-  ModalBody,
-  Input,
-  Box,
-  InputGroup,
-  InputLeftAddon,
-} from '@chakra-ui/react'
+import React, { useState, Fragment } from 'react'
+import { Modal, ModalOverlay, ModalContent, ModalBody, Input, Box, InputGroup, InputLeftAddon, FormControl, FormLabel, Switch, Flex } from '@chakra-ui/react'
 import { TiPencil } from 'react-icons/ti'
 import { BiX } from 'react-icons/bi'
 import { OrgAction, Bttn, Head, HeadLine, IconAction } from '.'
@@ -35,16 +25,20 @@ function EditOrgAction({ org, editOrg }) {
     setIsOpen(false)
   }
 
-  function handleNameChange(e, id) {
-    setModalValue({ ...modalValue, name: e.target.value })
+  function handleNameChange(ev) {
+    setModalValue({ ...modalValue, name: ev.target.value })
   }
 
-  function handleUrlChange(e, id) {
-    setModalValue({ ...modalValue, url: e.target.value })
+  function handleUrlChange(ev) {
+    setModalValue({ ...modalValue, url: ev.target.value })
+  }
+
+  function handleSiteChange(ev) {
+    setModalValue({ ...modalValue, site: ev.target.checked })
   }
 
   return (
-    <>
+    <Fragment>
       <OrgAction icon={TiPencil} color='blue.500' org={org} action={handleEditClick} />
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
@@ -56,42 +50,41 @@ function EditOrgAction({ org, editOrg }) {
             </Head>
             <Box w='100%' p={4}>
               <ModalBody p={0}>
-                <InputGroup size='sm'>
+                <InputGroup size='md'>
                   <InputLeftAddon children='https://' />
                   <Input
-                    size='sm'
                     mb={3}
                     value={modalValue.url}
                     key={modalValue.id}
                     variant='outline'
                     type='text'
-                    placeholder='*.my.salesforce.com'
-                    _placeholder={{ opacity: 0.5 }}
                     focusBorderColor='gray.400'
                     onChange={handleUrlChange}
                   />
                 </InputGroup>
                 <Input
-                  size='sm'
-                  mb={3}
                   value={modalValue.name}
                   key={modalValue.id}
                   variant='outline'
                   type='text'
                   placeholder='Org Alias'
-                  _placeholder={{ opacity: 0.5 }}
+                  _placeholder={{ opacity: 0.6 }}
                   focusBorderColor='gray.400'
                   onChange={handleNameChange}
                 />
+                <FormControl display='flex' mt={2} alignItems='center' justifyContent='space-between'>
+                  <Flex w='100%' alignItems='center'>
+                    <FormLabel mt={2} ml={2}>Experience Site?</FormLabel>
+                    <Switch isChecked={modalValue.site} onChange={handleSiteChange} />
+                  </Flex>
+                  <Bttn text='Save' type='submit' />
+                </FormControl>
               </ModalBody>
-              <ModalFooter p={0}>
-                <Bttn text='Save' type='submit' />
-              </ModalFooter>
             </Box>
           </form>
         </ModalContent>
       </Modal>
-    </>
+    </Fragment>
   )
 }
 

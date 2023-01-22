@@ -45,7 +45,7 @@ const extractName = url => {
 const currentUrl = async () => {
     let tabs = await chrome.tabs.query({ active: true, lastFocusedWindow: true })
     let tab = tabs[0]
-    return tab.url === 'chrome://newtab/' ? '' : isSalesforceUrl(tab.url) ? sanitizeUrl(tab.url) : ''
+    return tab.url === 'chrome://newtab/' ? '' : isSalesforceUrl(tab.url) ? extractHost(tab.url) : ''
 }
 
 const open = url => {

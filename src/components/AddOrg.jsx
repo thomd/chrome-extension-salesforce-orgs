@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Modal, ModalOverlay, ModalContent, ModalBody, ModalFooter, Input, Box, InputGroup, InputLeftAddon } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalBody, Input, Box, InputGroup, InputLeftAddon, FormControl, FormLabel, Switch, Flex } from '@chakra-ui/react'
 import { Btn, Bttn, IconAction, Head, HeadLine } from '.'
 import { BiPlus, BiX } from 'react-icons/bi'
 import { nanoid } from 'nanoid'
@@ -9,48 +9,29 @@ import { defaultOrgColor } from '../utils/color.js'
 function AddOrg({ addOrg }) {
   const [isOpen, setIsOpen] = useState(false)
   const [modalValue, setModalValue] = useState({})
-  const [nameInvalid, setNameInvalid] = useState(false)
-  const [urlInvalid, setUrlInvalid] = useState(false)
 
   const handleSubmit = ev => {
     ev.preventDefault()
-    let formInvalid = false
-    setUrlInvalid(false)
-    setNameInvalid(false)
-
-    if (modalValue.name === '') {
-      setNameInvalid(true)
-      formInvalid = true
-    }
-
-    if (modalValue.url === '' || (!modalValue.url.match(SALESFORCE_HOST) && !modalValue.url.match(FORCE_HOST))) {
-      setUrlInvalid(true)
-      formInvalid = true
-    }
-
-    if (!formInvalid) {
-      modalValue.url = extractHost(modalValue.url)
-      addOrg(modalValue)
-      setIsOpen(false)
-    }
+    modalValue.url = extractHost(modalValue.url)
+    addOrg(modalValue)
+    setIsOpen(false)
   }
 
   async function handleAddClick() {
-    setIsOpen(true)
     const url = await currentUrl()
     const name = url === '' ? '' : extractName(url)
     setModalValue({
       id: `sf-${nanoid()}`,
       name: name,
       url: url,
-      color: defaultOrgColor
+      color: defaultOrgColor,
+      site: true
     })
+    setIsOpen(true)
   }
 
   function onClose() {
     setIsOpen(false)
-    setUrlInvalid(false)
-    setNameInvalid(false)
     setModalValue({})
   }
 
@@ -61,17 +42,18 @@ function AddOrg({ addOrg }) {
 
   function handleUrlBlur(ev) {
     let url = ev.target.value
-    if (url.match(SALESFORCE_HOST) || url.match(FORCE_HOST)) {
-      let name = extractName(url)
-      setModalValue({ ...modalValue, name })
-    } else {
-      setUrlInvalid(true)
-    }
+    let name = extractName(url)
+    setModalValue({ ...modalValue, name })
   }
 
   function handleNameChange(ev) {
     let name = ev.target.value
     setModalValue({ ...modalValue, name })
+  }
+
+  function handleSiteChange(ev) {
+    let site = ev.target.checked
+    setModalValue({ ...modalValue, site })
   }
 
   return (
@@ -87,39 +69,37 @@ function AddOrg({ addOrg }) {
             </Head>
             <Box w='100%' p={4}>
               <ModalBody p={0}>
-                <InputGroup size='sm'>
+                <InputGroup size='md'>
                   <InputLeftAddon children='https://' />
                   <Input
-                    size='sm'
                     mb={3}
                     value={modalValue.url}
                     key={modalValue.id}
                     variant='outline'
                     type='text'
-                    placeholder='*.my.salesforce.com'
-                    _placeholder={{ opacity: 0.5 }}
-                    isInvalid={urlInvalid}
                     focusBorderColor='gray.400'
                     onChange={handleUrlChange}
                     onBlur={handleUrlBlur}
                   />
                 </InputGroup>
                 <Input
-                  size='sm'
                   value={modalValue.name}
                   key={modalValue.id}
                   variant='outline'
                   type='text'
-                  placeholder='Org Alias'
-                  _placeholder={{ opacity: 0.5 }}
-                  isInvalid={nameInvalid}
+                  placeholder='Org Name'
+                  _placeholder={{ opacity: 0.6 }}
                   focusBorderColor='gray.400'
                   onChange={handleNameChange}
                 />
+                <FormControl display='flex' mt={2} alignItems='center' justifyContent='space-between'>
+                  <Flex w='100%' alignItems='center'>
+                    <FormLabel mt={2} ml={2}>Experience Site?</FormLabel>
+                    <Switch isChecked={modalValue.site} onChange={handleSiteChange} />
+                  </Flex>
+                  <Bttn text='Add' type='submit' />
+                </FormControl>
               </ModalBody>
-              <ModalFooter p={0} mt={4}>
-                <Bttn text='Add' type='submit' />
-              </ModalFooter>
             </Box>
           </form>
         </ModalContent>
