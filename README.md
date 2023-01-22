@@ -1,9 +1,6 @@
-
 # Chrome Extension for Managing Salesforce Orgs
 
-This extension is not distributed via the Chrome Web Store. 
-
-Install it manually.
+This extension is not distributed via the Chrome Web Store. Install it manually.
 
 ## Features
 
