@@ -14,12 +14,12 @@ function OrgColorAction({ org, editOrg }) {
     setOrgValue(updatedOrg)
     editOrg(orgValue.id, updatedOrg)
     chrome.tabs.query({ lastFocusedWindow: true }, function(tabs) {
-        tabs.filter(tab => isSalesforceUrl(tab.url)).forEach(tab => {
-            chrome.scripting.executeScript({
-                target: { tabId: tab.id },
-                function: updateFavicon
-            })
+      tabs.filter(tab => isSalesforceUrl(tab.url)).forEach(tab => {
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          function: updateFavicon
         })
+      })
     })
   }
 

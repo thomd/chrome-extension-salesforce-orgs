@@ -1,10 +1,9 @@
-
 const updateFavicon = () => {
     const hostname = window.location.hostname
     chrome.storage.local.get(['SalesforceOrgs'], (result) => {
         const orgs = result['SalesforceOrgs']
         orgs.forEach(org => {
-            if (hostname.includes(org.name)) {
+            if (hostname.replace(/\..+$/, '') === org.url.replace(/\..+$/, '')) {
 
                 // first remove all favicons
                 const icon = document.querySelector("head > link[rel='icon']")
