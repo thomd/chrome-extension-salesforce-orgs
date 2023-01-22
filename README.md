@@ -1,11 +1,7 @@
 
 # Chrome Extension for Managing Salesforce Orgs
 
-![](images/extension2.png|width=500)
-
-![](images/extension3.png|width=500)
-
-![](images/extension4.png|width=500)
+<img src="images/extension2.png" width="400">
 
 This extension is not distributed via the Chrome Web Store. Install it manually.
 
