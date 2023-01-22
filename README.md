@@ -7,17 +7,17 @@ This extension is not distributed via the Chrome Web Store. Install it manually.
 
 ### Add New Salesforce Org
 
-<img src="images/extension2.png" width="400">
+<img src="images/extension2.png" width="500">
 
-### Edit Org
+### Define Color of Favicon
 
-Favicon of an Org is colored as defined
+Favicon in Browser Tab of an Org is colored as defined:
 
-<img src="images/extension3.png" width="400">
+<img src="images/extension3.png" width="500">
 
 ### Open Different Pages of an Org
 
-<img src="images/extension4.png" width="400">
+<img src="images/extension4.png" width="500">
 
 ## Install
 
