@@ -1,7 +1,9 @@
 
 # Chrome Extension for Managing Salesforce Orgs
 
-This extension is not distributed via the Chrome Web Store. Install it manually.
+This extension is not distributed via the Chrome Web Store. 
+
+Install it manually.
 
 ## Features
 
@@ -29,6 +31,7 @@ Open extension on any page using the key shortcut `Command + Shift + S`.
 
     npm install
     npm run build
+
 
 2. Open `chrome://extensions/` and check the box for **Developer mode** in the top right.
 3. Click the **Load unpacked extension** button and select the `build` folder.
