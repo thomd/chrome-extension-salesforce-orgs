@@ -2,7 +2,7 @@
 
 This extension is not distributed via the Chrome Web Store. Install it manually.
 
-<img src="images/extensionr1.png" width="500">
+<img src="images/extension1.png" width="500">
 
 ## Features
 
