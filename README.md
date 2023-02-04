@@ -35,10 +35,9 @@ Step 1.: Build extension
     npm install
     npm run build
 
-Step 2.: Open `chrome://extensions/` and check the box for **Developer mode** in the top right.
+Step 2.: Open `chrome://extensions/` and enable **Developer mode** in the top right.
 
 Step 3.: Click the **Load unpacked extension** button and select the `build` folder.
-
 
 ## Development
 
