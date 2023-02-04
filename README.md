@@ -17,13 +17,13 @@ Favicon in Browser Tab of an Org is colored as defined:
 
 <img src="images/extension3.png" width="500">
 
-#### Open Different Pages of an Org
+#### Open Different Features of an Org
 
 <img src="images/extension4.png" width="500">
 
 ## Usage
 
-Open extension on any page using the key shortcut `Command + Shift + S`.
+Open the extension on any page using the key shortcut `Command + Shift + S`.
 
 ## Install
 
