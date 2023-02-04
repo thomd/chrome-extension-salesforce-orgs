@@ -1,7 +1,8 @@
 # Chrome Extension for Managing Salesforce Orgs
 
-This extension is **not** distributed via the Chrome Web Store. [Install](#user-content-install) it manually. It was created to fit my personal needs - it might
-not fit yours.
+This extension is **not** distributed via the Chrome Web Store. It must be [installed](#user-content-install) manually. 
+
+This extension was created to fit my personal needs. It might not fit yours.
 
 <img src="images/extension1.png" width="500">
 
@@ -24,6 +25,8 @@ Favicon in Browser Tab of an Org is colored as defined:
 ## Usage
 
 Open the extension on any page using the key shortcut `Command + Shift + S`.
+
+Overwrite this shortcut on `chrome://extensions/shortcuts`.
 
 ## Install
 
