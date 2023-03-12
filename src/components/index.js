@@ -4,6 +4,7 @@ import OrgsList from './OrgsList'
 import OrgsListEditable from './OrgsListEditable'
 import { Btn, Bttn } from './Btn'
 import OrgAction from './OrgAction'
+import OrgActionIdModal from './OrgActionIdModal'
 import OrgsListItem from './OrgsListItem'
 import OrgsListItemEditable from './OrgsListItemEditable'
 import OrgColorAction from './OrgColorAction'
@@ -22,6 +23,7 @@ export {
     Btn,
     Bttn,
     OrgAction,
+    OrgActionIdModal,
     OrgsListItem,
     OrgsListItemEditable,
     OrgColorAction,

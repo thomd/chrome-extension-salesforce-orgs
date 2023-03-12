@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import { Modal, ModalOverlay, ModalContent, ModalBody, Input, Box, InputGroup, InputLeftAddon, FormControl, FormLabel, Switch, Flex } from '@chakra-ui/react'
 import { Btn, Bttn, IconAction, Head, HeadLine } from '.'
 import { BiPlus, BiX } from 'react-icons/bi'
 import { nanoid } from 'nanoid'
-import { SALESFORCE_HOST, FORCE_HOST, extractHost, extractName, currentUrl } from '../utils/url.js'
+import { extractHost, extractName, currentUrl } from '../utils/url.js'
 import { defaultOrgColor } from '../utils/color.js'
 
 function AddOrg({ addOrg }) {
@@ -57,7 +57,7 @@ function AddOrg({ addOrg }) {
   }
 
   return (
-    <>
+    <Fragment>
       <Btn icon={<BiPlus/>} text='Add Org' action={handleAddClick} />
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
@@ -104,7 +104,7 @@ function AddOrg({ addOrg }) {
           </form>
         </ModalContent>
       </Modal>
-    </>
+    </Fragment>
   )
 }
 

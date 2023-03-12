@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { HStack, Text, Box, Flex, Divider } from '@chakra-ui/react'
-import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiImageOutline } from 'react-icons/ti'
-import { OrgAction } from '.'
-import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl, getExperienceBuilderUrl } from '../utils/url.js'
+import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiImageOutline, TiSortNumericallyOutline } from 'react-icons/ti'
+import { OrgAction, OrgActionIdModal } from '.'
+import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl, getObjectUrl, getExperienceBuilderUrl } from '../utils/url.js'
 
 function OrgsListItem({ org }) {
 
@@ -26,15 +26,19 @@ function OrgsListItem({ org }) {
     open(getStoreUrl(org.url))
   }
 
+  function openObject(org, id) {
+    open(getObjectUrl(org.url, id))
+  }
+
   return (
     <Fragment>
       <HStack w='100%' py={2}>
         <Flex w='100%' justifyContent='space-between'>
           <Flex alignItems='center' mr={4}>
             <Box h={4} w={4} mr={3} bg={org.color} borderRadius={4} />
-            <Text fontSize='md' fontWeight='bold' color='gray.600' w='240px' noOfLines={1}>{org.name}</Text>
+            <Text fontSize='md' fontWeight='bold' color='gray.600' w='210px' noOfLines={1}>{org.name}</Text>
           </Flex>
-          <Flex color='gray.400' w='140px' justifyContent='space-between' alignItems='center'>
+          <Flex color='gray.400' w='170px' justifyContent='space-between' alignItems='center'>
             <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} label='Home' />
             <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} label='Setup' />
             <OrgAction icon={TiDocumentText} color='black' org={org} action={openDeveloperConsole} label='Developer Console' />
@@ -46,6 +50,7 @@ function OrgsListItem({ org }) {
             ) : (
               <Box w='50px' />
             ) }
+            <OrgActionIdModal icon={TiSortNumericallyOutline} color='black' org={org} action={openObject} label='Salesforce Object' />
           </Flex>
         </Flex>
       </HStack>

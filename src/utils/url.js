@@ -67,6 +67,8 @@ const getDeveloperConsoleUrl = url => extractHost(url) + '/_ui/common/apex/debug
 
 const getStoreUrl = url => extractInstanceName(url) + '.my.site.com/'
 
+const getObjectUrl = (url, id) => extractInstanceName(url) + '.lightning.force.com/lightning/r/' + id + '/view'
+
 const getExperienceBuilderUrl = url => extractInstanceName(url) + '.builder.salesforce-experience.com/sfsites/picasso/core/config/commeditor.jsp'
 
 export {
@@ -81,6 +83,7 @@ export {
     getSetupUrl,
     getDeveloperConsoleUrl,
     getStoreUrl,
+    getObjectUrl,
     getExperienceBuilderUrl,
 }
 
