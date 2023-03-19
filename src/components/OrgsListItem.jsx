@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { HStack, Text, Box, Flex, Divider } from '@chakra-ui/react'
-import { TiHomeOutline, TiCogOutline, TiDocumentText, TiShoppingCart, TiImageOutline, TiSortNumericallyOutline } from 'react-icons/ti'
+import { TiHomeOutline, TiCogOutline, TiCodeOutline, TiShoppingCart, TiImageOutline, TiSortNumericallyOutline } from 'react-icons/ti'
 import { OrgAction, OrgActionIdModal } from '.'
 import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl, getObjectUrl, getExperienceBuilderUrl } from '../utils/url.js'
 
@@ -41,7 +41,7 @@ function OrgsListItem({ org }) {
           <Flex color='gray.400' w='170px' justifyContent='space-between' alignItems='center'>
             <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} label='Home' />
             <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} label='Setup' />
-            <OrgAction icon={TiDocumentText} color='black' org={org} action={openDeveloperConsole} label='Developer Console' />
+            <OrgAction icon={TiCodeOutline} color='black' org={org} action={openDeveloperConsole} label='Developer Console' />
             { org.site ? (
               <Fragment>
                 <OrgAction icon={TiImageOutline} color='black' org={org} action={openExperienceBuilder} label='Experience Builder' />
