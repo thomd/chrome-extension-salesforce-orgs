@@ -1,7 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Salesforce Org Manager",
+  "version": "1.0.0",
   "description": "Manage Salesforce Orgs",
+  "author": {
+    "email": "thomduerr@gmail.com"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-256.png"
