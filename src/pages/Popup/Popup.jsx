@@ -54,8 +54,7 @@ const Popup = () => {
     <VStack p={0} w='440px' minH='230px'>
       <Head>
         <HeadLine text='Salesforce Orgs' />
-        <AddOrg addOrg={addOrg}/>
-        { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} /> }
+        { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} addOrg={addOrg} /> }
       </Head>
       <Box w='100%' p={4}>
         <OrgsList items={orgs} />
