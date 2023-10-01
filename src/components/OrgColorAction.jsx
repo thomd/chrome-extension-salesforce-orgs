@@ -8,9 +8,9 @@ function OrgColorAction({ org, editOrg }) {
   const [isOpen, setIsOpen] = useBoolean()
   const [orgValue, setOrgValue] = useState(org)
 
-  const handleColorClick = color => {
+  const handleColorClick = (color, borderColor) => {
     setIsOpen.toggle()
-    let updatedOrg ={ ...orgValue, color: color }
+    let updatedOrg ={ ...orgValue, color: color, borderColor: borderColor }
     setOrgValue(updatedOrg)
     editOrg(orgValue.id, updatedOrg)
     chrome.tabs.query({ lastFocusedWindow: true }, function(tabs) {
@@ -26,7 +26,7 @@ function OrgColorAction({ org, editOrg }) {
   return (
     <Popover isOpen={isOpen} placement='right'>
       <PopoverTrigger>
-        <Box h={4} w={4} bg={orgValue.color} borderRadius={4} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
+        <Box h={4} w={4} bg={orgValue.color} borderWidth={2} borderStyle={'solid'} borderColor={orgValue.borderColor} borderRadius={4} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
       </PopoverTrigger>
       <PopoverContent w='auto' boxShadow='md'>
         <PopoverArrow />
@@ -36,9 +36,12 @@ function OrgColorAction({ org, editOrg }) {
               key={`col-${index}`}
               h={4}
               w={4}
-              bg={color}
+              bg={color.bg}
+              borderWidth={2}
+              borderStyle={'solid'}
+              borderColor={color.border}
               _hover={{ cursor: 'pointer' }}
-              onClick={() => handleColorClick(color)}
+              onClick={() => handleColorClick(color.bg, color.border)}
             />
           ))}
         </SimpleGrid>
