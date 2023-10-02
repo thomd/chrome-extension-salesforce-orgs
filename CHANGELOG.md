@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.1.0] - 2023-10-01
 
 ### Added
 
@@ -9,10 +9,8 @@
 ### Changed
 
 - Moved add button into settings
+- Added Border Color
 
 ## [1.0.0] - 2023-04-15
 
 Initial release
-
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
-[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.1.0
