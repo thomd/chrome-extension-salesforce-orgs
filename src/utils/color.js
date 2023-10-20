@@ -1,30 +1,30 @@
 const orgColors = [
     {
-        bg: '#a0aec0',         // gray.400
+        bg: '#A0AEC0',         // gray.400
         border: '#718096'      // gray.500
     },
     {
-        bg: '#48bb78',         // green.400
+        bg: '#48BB78',         // green.400
         border: '#38A169'      // green.500
     },
     {
-        bg: '#38b2ac',         // teal.400
+        bg: '#38B2AC',         // teal.400
         border: '#319795'      // teal.500
     },
     {
-        bg: '#00a1df',         // Salesforce Blue
-        border: '#0b5cab'      // Salesforce Blue Dark
+        bg: '#00A1DF',         // Salesforce Blue
+        border: '#1779D8'      // Salesforce Blue Dark
     },
     {
-        bg: '#0bc5ea',         // cyan.400
+        bg: '#0BC5EA',         // cyan.400
         border: '#00B5D8'      // cyan.500
     },
     {
-        bg: '#9f7aea',         // purple.400
+        bg: '#9f7AEA',         // purple.400
         border: '#805AD5'      // purple.500
     },
     {
-        bg: '#ed64a6',         // pink.400
+        bg: '#ED64A6',         // pink.400
         border: '#D53F8C'      // pink.500
     },
     {
@@ -32,11 +32,11 @@ const orgColors = [
         border: '#C53030'      // red.600
     },
     {
-        bg: '#f6ad55',         // orange.300
-        border: '#ED8936'      // orange.400
+        bg: '#FBD38D',         // orange.200
+        border: '#F6AD55'      // orange.300
     },
     {
-        bg: '#faf089',         // yellow.200
+        bg: '#FAF089',         // yellow.200
         border: '#F6E05E'      // yellow.300
     },
 ]
