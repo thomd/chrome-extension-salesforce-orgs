@@ -1,9 +1,9 @@
 import { updateFavicon } from '../../utils/favicon'
 
 if (document.readyState === 'complete') {
-    updateFavicon()
+  updateFavicon()
 } else {
-    window['onload'] = function () {
-        updateFavicon()
-    }
+  window['onload'] = function () {
+    updateFavicon()
+  }
 }

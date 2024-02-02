@@ -7,8 +7,8 @@ import Popup from './Popup'
 
 const theme = extendTheme({
   colors: {
-    sf: themeColors
-  }
+    sf: themeColors,
+  },
 })
 
 createRoot(window.document.querySelector('#app')).render(

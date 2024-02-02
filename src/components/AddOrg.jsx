@@ -25,7 +25,7 @@ function AddOrg({ addOrg }) {
       name: name,
       url: url,
       color: defaultOrgColor,
-      site: true
+      site: true,
     })
     setIsOpen(true)
   }
@@ -58,7 +58,7 @@ function AddOrg({ addOrg }) {
 
   return (
     <Fragment>
-      <Btn icon={<BiPlus/>} text='Add Org' action={handleAddClick} />
+      <Btn icon={<BiPlus />} text='Add Org' action={handleAddClick} />
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
@@ -94,7 +94,9 @@ function AddOrg({ addOrg }) {
                 />
                 <FormControl display='flex' mt={2} alignItems='center' justifyContent='space-between'>
                   <Flex w='100%' alignItems='center'>
-                    <FormLabel mt={2} ml={2}>Experience Site?</FormLabel>
+                    <FormLabel mt={2} ml={2}>
+                      Experience Site?
+                    </FormLabel>
                     <Switch isChecked={modalValue.site} onChange={handleSiteChange} />
                   </Flex>
                   <Bttn text='Add' type='submit' />

@@ -37,7 +37,4 @@ function Bttn({ icon, text, action, ...props }) {
   )
 }
 
-export {
-  Btn,
-  Bttn,
-}
+export { Btn, Bttn }

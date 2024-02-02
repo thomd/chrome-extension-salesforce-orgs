@@ -10,23 +10,35 @@ function OrgColorAction({ org, editOrg }) {
 
   const handleColorClick = (color, borderColor) => {
     setIsOpen.toggle()
-    let updatedOrg ={ ...orgValue, color: color, borderColor: borderColor }
+    let updatedOrg = { ...orgValue, color: color, borderColor: borderColor }
     setOrgValue(updatedOrg)
     editOrg(orgValue.id, updatedOrg)
-    chrome.tabs.query({ lastFocusedWindow: true }, function(tabs) {
-      tabs.filter(tab => isSalesforceUrl(tab.url)).forEach(tab => {
-        chrome.scripting.executeScript({
-          target: { tabId: tab.id },
-          function: updateFavicon
+    chrome.tabs.query({ lastFocusedWindow: true }, function (tabs) {
+      tabs
+        .filter(tab => isSalesforceUrl(tab.url))
+        .forEach(tab => {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            function: updateFavicon,
+          })
         })
-      })
     })
   }
 
   return (
     <Popover isOpen={isOpen} placement='right'>
       <PopoverTrigger>
-        <Box h={4} w={4} bg={orgValue.color} borderWidth={2} borderStyle={'solid'} borderColor={orgValue.borderColor} borderRadius={4} _hover={{ cursor: 'pointer' }} onClick={setIsOpen.toggle} />
+        <Box
+          h={4}
+          w={4}
+          bg={orgValue.color}
+          borderWidth={2}
+          borderStyle={'solid'}
+          borderColor={orgValue.borderColor}
+          borderRadius={4}
+          _hover={{ cursor: 'pointer' }}
+          onClick={setIsOpen.toggle}
+        />
       </PopoverTrigger>
       <PopoverContent w='auto' boxShadow='md'>
         <PopoverArrow />

@@ -1,43 +1,14 @@
 import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
-import { VStack, Text, Flex, Box, Button, Alert, AlertIcon } from '@chakra-ui/react'
-import { BiMenu } from 'react-icons/bi'
-import { EditOrgs, AddOrg, OrgsList, Head, HeadLine } from '../../components'
-
-//
-// Components Structure:
-//
-//    Popup
-//    ├── EditOrgs
-//    │   ├── Button
-//    │   └── Modal
-//    │        └── OrgsListEditable
-//    │            └── SortableList
-//    │                └── OrgsListItemEditable
-//    │                    ├── OrgColorAction
-//    │                    ├── OrgAction:Delete
-//    │                    └── OrgEditAction
-//    │                        └── Modal
-//    │                            ├── Input
-//    │                            └── Input
-//    ├── AddOrg
-//    │   ├── Button
-//    │   └── Modal
-//    │       ├── Input
-//    │       └── Input
-//    └── OrgsList
-//        └── OrgsListItem
-//            ├── OrgAction:Home
-//            ├── OrgAction:Setup
-//            ├── OrgAction:DeveloperConsole
-//            └── OrgAction:Store
-//
+import { VStack, Box, Alert, AlertIcon } from '@chakra-ui/react'
+import { EditOrgs, OrgsList, Head, HeadLine, Options } from '../../components'
+import { download } from '../../utils/url.js'
 
 const Popup = () => {
   const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', [])
 
   function deleteOrg(org) {
-    const newOrgs = orgs.filter((item) => item.id !== org.id )
+    const newOrgs = orgs.filter(item => item.id !== org.id)
     setOrgs(newOrgs)
   }
 
@@ -46,23 +17,29 @@ const Popup = () => {
   }
 
   function editOrg(id, updatedOrg) {
-    const updatedItem = orgs.map((org) => org.id === id ? updatedOrg : org )
+    const updatedItem = orgs.map(org => (org.id === id ? updatedOrg : org))
     setOrgs(updatedItem)
+  }
+
+  function exportOrgs() {
+    download(orgs)
   }
 
   return (
     <VStack p={0} w='440px' minH='230px'>
       <Head>
         <HeadLine text='Salesforce Orgs' />
-        { orgs.length > 0 && <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} addOrg={addOrg} /> }
+        <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} addOrg={addOrg} />
+        <Options exportOrgs={exportOrgs} />
       </Head>
       <Box w='100%' p={4}>
         <OrgsList items={orgs} />
-        { error &&
-        <Alert status='error'>
-          <AlertIcon />Error: {error}
-        </Alert>
-        }
+        {!isPersistent && (
+          <Alert status='error'>
+            <AlertIcon />
+            Error writing to the chrome.storage: {error}
+          </Alert>
+        )}
       </Box>
     </VStack>
   )

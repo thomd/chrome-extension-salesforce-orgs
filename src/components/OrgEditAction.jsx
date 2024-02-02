@@ -4,7 +4,6 @@ import { TiPencil } from 'react-icons/ti'
 import { BiX } from 'react-icons/bi'
 import { OrgAction, Bttn, Head, HeadLine, IconAction } from '.'
 
-
 function EditOrgAction({ org, editOrg }) {
   const [isOpen, setIsOpen] = useState(false)
   const [modalValue, setModalValue] = useState({})
@@ -74,7 +73,9 @@ function EditOrgAction({ org, editOrg }) {
                 />
                 <FormControl display='flex' mt={2} alignItems='center' justifyContent='space-between'>
                   <Flex w='100%' alignItems='center'>
-                    <FormLabel mt={2} ml={2}>Experience Site?</FormLabel>
+                    <FormLabel mt={2} ml={2}>
+                      Experience Site?
+                    </FormLabel>
                     <Switch isChecked={modalValue.site} onChange={handleSiteChange} />
                   </Flex>
                   <Bttn text='Save' type='submit' />

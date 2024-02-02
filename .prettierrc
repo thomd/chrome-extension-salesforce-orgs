@@ -2,5 +2,8 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "requirePragma": false,
-  "arrowParens": "always"
+  "jsxSingleQuote": true,
+  "semi": false,
+  "arrowParens": "avoid",
+  "printWidth": 160
 }

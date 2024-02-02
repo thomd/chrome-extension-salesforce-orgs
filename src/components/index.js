@@ -14,23 +14,25 @@ import SortableItem from './SortableItem'
 import Head from './Head'
 import HeadLine from './HeadLine'
 import IconAction from './IconAction'
+import Options from './Options'
 
 export {
-    EditOrgs,
-    AddOrg,
-    OrgsList,
-    OrgsListEditable,
-    Btn,
-    Bttn,
-    OrgAction,
-    OrgActionIdModal,
-    OrgsListItem,
-    OrgsListItemEditable,
-    OrgColorAction,
-    OrgEditAction,
-    SortableList,
-    SortableItem,
-    Head,
-    HeadLine,
-    IconAction,
+  EditOrgs,
+  AddOrg,
+  OrgsList,
+  OrgsListEditable,
+  Btn,
+  Bttn,
+  OrgAction,
+  OrgActionIdModal,
+  OrgsListItem,
+  OrgsListItemEditable,
+  OrgColorAction,
+  OrgEditAction,
+  SortableList,
+  SortableItem,
+  Head,
+  HeadLine,
+  IconAction,
+  Options,
 }

@@ -5,9 +5,7 @@ import { IconContext } from 'react-icons'
 function IconAction({ icon: Icon, action }) {
   return (
     <Box _hover={{ cursor: 'pointer' }}>
-      <IconContext.Provider value={{ size: '28px' }}>
-        <Icon onClick={action} />
-      </IconContext.Provider>
+      <IconContext.Provider value={{ size: '28px' }}>{action ? <Icon onClick={action} /> : <Icon />}</IconContext.Provider>
     </Box>
   )
 }

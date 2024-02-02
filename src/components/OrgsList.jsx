@@ -12,4 +12,3 @@ function OrgsList({ items }) {
 }
 
 export default OrgsList
-

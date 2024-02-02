@@ -5,7 +5,6 @@ import { OrgAction, OrgActionIdModal } from '.'
 import { open, getSetupUrl, getDeveloperConsoleUrl, getStoreUrl, getObjectUrl, getExperienceBuilderUrl } from '../utils/url.js'
 
 function OrgsListItem({ org }) {
-
   function openHome(org) {
     open(org.url)
   }
@@ -36,20 +35,22 @@ function OrgsListItem({ org }) {
         <Flex w='100%' justifyContent='space-between'>
           <Flex alignItems='center' mr={4}>
             <Box h={4} w={4} mr={3} bg={org.color} borderWidth={2} borderStyle={'solid'} borderColor={org.borderColor} borderRadius={4} />
-            <Text fontSize='md' fontWeight='bold' color='gray.600' w='210px' noOfLines={1}>{org.name}</Text>
+            <Text fontSize='md' fontWeight='bold' color='gray.600' w='210px' noOfLines={1}>
+              {org.name}
+            </Text>
           </Flex>
           <Flex color='gray.400' w='170px' justifyContent='space-between' alignItems='center'>
             <OrgAction icon={TiHomeOutline} color='black' org={org} action={openHome} label='Home' />
             <OrgAction icon={TiCogOutline} color='black' org={org} action={openSetup} label='Setup' />
             <OrgAction icon={TiCodeOutline} color='black' org={org} action={openDeveloperConsole} label='Developer Console' />
-            { org.site ? (
+            {org.site ? (
               <Fragment>
                 <OrgAction icon={TiImageOutline} color='black' org={org} action={openExperienceBuilder} label='Experience Builder' />
                 <OrgAction icon={TiShoppingCart} color='black' org={org} action={openStore} label='Store' />
               </Fragment>
             ) : (
               <Box w='50px' />
-            ) }
+            )}
             <OrgActionIdModal icon={TiSortNumericallyOutline} color='black' org={org} action={openObject} label='Salesforce Object' />
           </Flex>
         </Flex>

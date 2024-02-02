@@ -18,15 +18,8 @@
       }
     }
   },
-  "host_permissions": [
-    "<all_urls>"
-  ],
-  "permissions": [
-    "storage",
-    "scripting",
-    "webNavigation",
-    "tabs"
-  ],
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["storage", "scripting", "webNavigation", "tabs"],
   "icons": {
     "32": "icon-32.png",
     "64": "icon-64.png",
@@ -35,22 +28,13 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://*.salesforce.com/*",
-        "https://*.site.com/*",
-        "https://*.salesforce-experience.com/*",
-        "https://*.force.com/*"
-      ],
-      "js": [
-        "contentScript.bundle.js"
-      ]
+      "matches": ["https://*.salesforce.com/*", "https://*.site.com/*", "https://*.salesforce-experience.com/*", "https://*.force.com/*"],
+      "js": ["contentScript.bundle.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": [
-        "icon-128.png"
-      ],
+      "resources": ["icon-128.png"],
       "matches": []
     }
   ]

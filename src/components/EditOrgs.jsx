@@ -22,7 +22,7 @@ function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg, addOrg }) {
         <ModalContent>
           <Head>
             <HeadLine text='Edit Salesforce Orgs' />
-            <AddOrg addOrg={addOrg}/>
+            <AddOrg addOrg={addOrg} />
             <IconAction icon={BiX} action={onClose} />
           </Head>
           <ModalBody p={4} mt={4}>
