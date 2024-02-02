@@ -2,7 +2,7 @@ import React from 'react'
 import { useChromeStorageLocal } from 'use-chrome-storage'
 import { VStack, Box, Alert, AlertIcon } from '@chakra-ui/react'
 import { EditOrgs, OrgsList, Head, HeadLine, Options } from '../../components'
-import { download } from '../../utils/url.js'
+import { download, upload } from '../../utils/url.js'
 
 const Popup = () => {
   const [orgs, setOrgs, isPersistent, error] = useChromeStorageLocal('SalesforceOrgs', [])
@@ -21,8 +21,12 @@ const Popup = () => {
     setOrgs(updatedItem)
   }
 
-  function exportOrgs() {
+  function exportConfig() {
     download(orgs)
+  }
+
+  function importConfig() {
+    upload(setOrgs)
   }
 
   return (
@@ -30,7 +34,7 @@ const Popup = () => {
       <Head>
         <HeadLine text='Salesforce Orgs' />
         <EditOrgs orgs={orgs} setOrgs={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} addOrg={addOrg} />
-        <Options exportOrgs={exportOrgs} />
+        <Options exportConfig={exportConfig} importConfig={importConfig} />
       </Head>
       <Box w='100%' p={4}>
         <OrgsList items={orgs} />

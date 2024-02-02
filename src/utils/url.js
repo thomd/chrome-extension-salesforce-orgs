@@ -68,6 +68,27 @@ const download = orgs => {
   a.click()
 }
 
+const upload = (setOrgs) => {
+  let input = document.createElement('input')
+  input.type = 'file'
+  input.hidden = true
+  input.addEventListener('change', ev => {
+    let files = ev.target.files
+    if (!files || files.length === 0) {
+      return
+    }
+    let file = files[0]
+    let reader = new FileReader()
+    reader.onload = ev => {
+      let content = ev.target.result
+      let orgs = JSON.parse(content)
+      setOrgs(orgs)
+    }
+    reader.readAsText(file)
+  })
+  input.click()
+}
+
 const getSetupUrl = url => extractHost(url) + '/lightning/setup/SetupOneHome/home'
 
 const getDeveloperConsoleUrl = url => extractHost(url) + '/_ui/common/apex/debug/ApexCSIPage'
@@ -88,6 +109,7 @@ export {
   currentUrl,
   open,
   download,
+  upload,
   getSetupUrl,
   getDeveloperConsoleUrl,
   getStoreUrl,
