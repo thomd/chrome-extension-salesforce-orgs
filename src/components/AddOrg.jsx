@@ -6,14 +6,14 @@ import { nanoid } from 'nanoid'
 import { extractHost, extractName, currentUrl } from '../utils/url.js'
 import { defaultOrgColor } from '../utils/color.js'
 
-function AddOrg({ addOrg }) {
+function AddOrg({ orgs, setOrgs }) {
   const [isOpen, setIsOpen] = useState(false)
   const [modalValue, setModalValue] = useState({})
 
   const handleSubmit = ev => {
     ev.preventDefault()
     modalValue.url = extractHost(modalValue.url)
-    addOrg(modalValue)
+    setOrgs([...orgs, modalValue])
     setIsOpen(false)
   }
 

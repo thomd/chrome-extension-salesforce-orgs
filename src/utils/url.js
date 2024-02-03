@@ -61,7 +61,10 @@ const open = url => {
 }
 
 const download = orgs => {
-  let uri = 'data:application/json;base64,' + window.btoa(JSON.stringify(orgs))
+  let data = {
+    orgs: orgs
+  }
+  let uri = 'data:application/json;base64,' + window.btoa(JSON.stringify(data))
   const a = document.createElement('a')
   a.href = uri
   a.download = 'salesforce-orgs.json'
@@ -81,8 +84,8 @@ const upload = (setOrgs) => {
     let reader = new FileReader()
     reader.onload = ev => {
       let content = ev.target.result
-      let orgs = JSON.parse(content)
-      setOrgs(orgs)
+      let data = JSON.parse(content)
+      setOrgs(data.orgs)
     }
     reader.readAsText(file)
   })

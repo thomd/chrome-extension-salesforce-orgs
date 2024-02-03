@@ -3,7 +3,7 @@ import { Modal, ModalOverlay, ModalContent, ModalBody } from '@chakra-ui/react'
 import { BiMenu, BiX } from 'react-icons/bi'
 import { OrgsListEditable, Head, HeadLine, IconAction, AddOrg } from '.'
 
-function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg, addOrg }) {
+function EditOrgs({ orgs, setOrgs }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleEditClick() {
@@ -22,11 +22,11 @@ function EditOrgs({ orgs, setOrgs, deleteOrg, editOrg, addOrg }) {
         <ModalContent>
           <Head>
             <HeadLine text='Edit Salesforce Orgs' />
-            <AddOrg addOrg={addOrg} />
+            <AddOrg orgs={orgs} setOrgs={setOrgs} />
             <IconAction icon={BiX} action={onClose} />
           </Head>
           <ModalBody p={4} mt={4}>
-            <OrgsListEditable items={orgs} setItems={setOrgs} deleteOrg={deleteOrg} editOrg={editOrg} />
+            <OrgsListEditable orgs={orgs} setOrgs={setOrgs} />
           </ModalBody>
         </ModalContent>
       </Modal>

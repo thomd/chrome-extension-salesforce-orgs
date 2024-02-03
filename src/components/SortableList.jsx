@@ -3,7 +3,11 @@ import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from 
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 function SortableList(props) {
-  const { items, setItems, children, itemRender } = props
+  console.log('props: ', props)
+  const { items, setItems, children } = props
+  console.log('items: ', items)
+  console.log('setItems: ', setItems)
+  console.log('children: ', children)
   const sensors = useSensors(useSensor(PointerSensor))
 
   function handleDragEnd(event) {
