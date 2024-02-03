@@ -3,6 +3,7 @@
   "trailingComma": "es5",
   "requirePragma": false,
   "jsxSingleQuote": true,
+  "bracketSameLine": true,
   "semi": false,
   "arrowParens": "avoid",
   "printWidth": 160

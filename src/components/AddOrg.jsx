@@ -1,5 +1,19 @@
 import React, { useState, Fragment } from 'react'
-import { Modal, ModalOverlay, ModalContent, ModalBody, Input, Box, InputGroup, InputLeftAddon, FormControl, FormLabel, Switch, Flex, MenuItem } from '@chakra-ui/react'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  Input,
+  Box,
+  InputGroup,
+  InputLeftAddon,
+  FormControl,
+  FormLabel,
+  Switch,
+  Flex,
+  MenuItem,
+} from '@chakra-ui/react'
 import { Bttn, IconAction, Head, HeadLine } from '.'
 import { BiX } from 'react-icons/bi'
 import { nanoid } from 'nanoid'
@@ -58,7 +72,9 @@ function AddOrg({ orgs, setOrgs }) {
 
   return (
     <Fragment>
-      <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={handleAddClick}>Add Org</MenuItem>
+      <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={handleAddClick}>
+        Add Org
+      </MenuItem>
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>

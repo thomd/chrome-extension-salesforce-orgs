@@ -12,8 +12,7 @@ function Btn({ icon, text, action, ...props }) {
       borderColor='sf.btnsbc'
       _hover={{ opacity: 0.7 }}
       onClick={action}
-      {...props}
-    >
+      {...props}>
       {text}
     </Button>
   )
@@ -30,8 +29,7 @@ function Bttn({ icon, text, action, ...props }) {
       borderColor='sf.btnpbc'
       _hover={{ opacity: 0.7 }}
       onClick={action}
-      {...props}
-    >
+      {...props}>
       {text}
     </Button>
   )

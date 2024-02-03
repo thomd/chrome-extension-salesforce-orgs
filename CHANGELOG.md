@@ -1,10 +1,17 @@
 # Changelog
 
-## [1.1.0] - 2023-10-01
+## [1.2.0] - 2024-02-03
 
 ### Added
 
-- Show current version from metatag next to Org name
+- List of Salesforce links
+- Import & export of configuration
+
+### Changed
+
+- Navigation
+
+## [1.1.0] - 2023-10-01
 
 ### Changed
 

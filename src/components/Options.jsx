@@ -13,8 +13,12 @@ function Options({ orgs, setOrgs }) {
           <AddOrg orgs={orgs} setOrgs={setOrgs} />
           <EditOrgs orgs={orgs} setOrgs={setOrgs} />
           <MenuDivider />
-          <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={() => download(orgs)}>Export Configuration</MenuItem>
-          <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={() => upload(setOrgs)}>Import Configuration</MenuItem>
+          <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={() => download(orgs)}>
+            Export Configuration
+          </MenuItem>
+          <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={() => upload(setOrgs)}>
+            Import Configuration
+          </MenuItem>
         </MenuList>
       </Menu>
     </Fragment>

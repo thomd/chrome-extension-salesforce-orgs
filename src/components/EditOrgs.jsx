@@ -16,7 +16,9 @@ function EditOrgs({ orgs, setOrgs }) {
 
   return (
     <Fragment>
-      <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={handleEditClick}>Edit Orgs</MenuItem>
+      <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={handleEditClick}>
+        Edit Orgs
+      </MenuItem>
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>

@@ -1,6 +1,6 @@
 {
-  "name": "Salesforce Orgs Manager",
-  "version": "1.1.0",
+  "name": "chrome-extension-salesforce-orgs",
+  "version": "1.2.0",
   "description": "Manage Salesforce Orgs",
   "license": "MIT",
   "repository": {
