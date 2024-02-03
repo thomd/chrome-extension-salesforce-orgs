@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1] - 2024-02-03
+
+### Fix
+
+- fix editing of colors and org name
+
 ## [1.2.0] - 2024-02-03
 
 ### Added
