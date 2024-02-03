@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react'
-import { Modal, ModalOverlay, ModalContent, ModalBody } from '@chakra-ui/react'
-import { BiMenu, BiX } from 'react-icons/bi'
-import { OrgsListEditable, Head, HeadLine, IconAction, AddOrg } from '.'
+import { Modal, ModalOverlay, ModalContent, ModalBody, MenuItem } from '@chakra-ui/react'
+import { BiX } from 'react-icons/bi'
+import { OrgsListEditable, Head, HeadLine, IconAction } from '.'
 
 function EditOrgs({ orgs, setOrgs }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,13 +16,12 @@ function EditOrgs({ orgs, setOrgs }) {
 
   return (
     <Fragment>
-      <IconAction icon={BiMenu} action={handleEditClick} />
+      <MenuItem fontSize='sm' fontWeight='bold' color='gray.400' _hover={{ color: 'sf.headtc' }} onClick={handleEditClick}>Edit Orgs</MenuItem>
       <Modal isOpen={isOpen} size='full' motionPreset='none'>
         <ModalOverlay />
         <ModalContent>
           <Head>
             <HeadLine text='Edit Salesforce Orgs' />
-            <AddOrg orgs={orgs} setOrgs={setOrgs} />
             <IconAction icon={BiX} action={onClose} />
           </Head>
           <ModalBody p={4} mt={4}>
