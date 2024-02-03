@@ -4,7 +4,7 @@ import { TiPencil } from 'react-icons/ti'
 import { BiX } from 'react-icons/bi'
 import { OrgAction, Bttn, Head, HeadLine, IconAction } from '.'
 
-function EditOrgAction({ org, editOrg }) {
+function EditOrgAction({ org, orgs, setOrgs, editOrg }) {
   const [isOpen, setIsOpen] = useState(false)
   const [modalValue, setModalValue] = useState({})
 
@@ -15,7 +15,7 @@ function EditOrgAction({ org, editOrg }) {
 
   function handleEditSubmit(e) {
     e.preventDefault()
-    editOrg(modalValue.id, modalValue)
+    editOrg(orgs, setOrgs, modalValue.id, modalValue)
     setModalValue({})
     setIsOpen(false)
   }

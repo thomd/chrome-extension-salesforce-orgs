@@ -4,7 +4,7 @@ import { orgColors } from '../utils/color'
 import { updateFavicon } from '../utils/favicon'
 import { isSalesforceUrl } from '../utils/url'
 
-function OrgColorAction({ org, editOrg }) {
+function OrgColorAction({ org, orgs, setOrgs, editOrg }) {
   const [isOpen, setIsOpen] = useBoolean()
   const [orgValue, setOrgValue] = useState(org)
 
@@ -12,7 +12,7 @@ function OrgColorAction({ org, editOrg }) {
     setIsOpen.toggle()
     let updatedOrg = { ...orgValue, color: color, borderColor: borderColor }
     setOrgValue(updatedOrg)
-    editOrg(orgValue.id, updatedOrg)
+    editOrg(orgs, setOrgs, orgValue.id, updatedOrg)
     chrome.tabs.query({ lastFocusedWindow: true }, function (tabs) {
       tabs
         .filter(tab => isSalesforceUrl(tab.url))
