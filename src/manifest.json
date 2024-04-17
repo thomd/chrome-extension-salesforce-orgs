@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Salesforce Org Manager",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Manage Salesforce Orgs",
   "author": {
     "email": "thomduerr@gmail.com"
@@ -28,7 +28,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*.salesforce.com/*", "https://*.site.com/*", "https://*.salesforce-experience.com/*", "https://*.force.com/*"],
+      "matches": ["https://*.salesforce.com/*", "https://*.site.com/*", "https://*.salesforce-experience.com/*", "https://*.salesforce-setup.com/*", "https://*.force.com/*"],
       "js": ["contentScript.bundle.js"]
     }
   ],
