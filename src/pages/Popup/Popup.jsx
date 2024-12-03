@@ -10,7 +10,7 @@ const Popup = () => {
   const [isOpen, setOpen] = useState(true)
 
   return (
-    <VStack p={0} w='440px' minH='230px'>
+    <VStack p={0} gap={0} w='440px' minH='230px'>
       <Head>
         <Flex w='100%'>
           <HeadLink
@@ -31,7 +31,7 @@ const Popup = () => {
         </Flex>
         <Options orgs={orgs} setOrgs={setOrgs} />
       </Head>
-      <Box w='100%' p={4}>
+      <Box w='100%' px={4} py={2}>
         {isOpen ? <OrgsList items={orgs} /> : <LinksList defaultLinks={defaultLinks} links={links} />}
       </Box>
     </VStack>
