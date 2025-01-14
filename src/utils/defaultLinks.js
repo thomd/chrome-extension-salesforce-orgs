@@ -28,7 +28,7 @@ const defaultLinks = {
         {
             'id': 'link-6',
             'name': 'Developers Documentation',
-            'href': 'https://developer.salesforce.com/docs'
+            'href': 'developer.salesforce.com/docs'
         },
         {
             'id': 'link-7',
